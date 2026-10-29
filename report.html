@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+
+{% block title %}Capstone Final Report — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}14-Section Capstone Research Report{% endblock %}
+
+{% block content %}
+<div style="max-width: 950px; margin: 0 auto;">
+  <!-- Report Actions Bar -->
+  <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 16px 24px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 28px;">
+    <div>
+      <span style="font-size: 11px; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">FORMAL REPORT GENERATION</span>
+      <div style="font-size: 13px; color: var(--text-muted);">Generated {{ report.metadata.generated_at }}</div>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <a href="{{ url_for('export_xlsx') }}" class="btn btn-secondary btn-sm">📊 Export XLSX</a>
+      <a href="{{ url_for('export_csv') }}" class="btn btn-outline btn-sm">📄 Export CSV</a>
+    </div>
+  </div>
+
+  <!-- Document Header -->
+  <div class="card" style="padding: 36px; border-top: 4px solid var(--primary);">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <div class="badge badge-primary" style="margin-bottom: 12px;">Undergraduate Capstone Final Report</div>
+      <h1 style="font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px;">
+        {{ report.metadata.title }}
+      </h1>
+      <h3 style="font-size: 16px; color: #38bdf8; font-weight: 500; margin-bottom: 16px;">
+        {{ report.metadata.subtitle }}
+      </h3>
+      <div style="font-size: 12px; color: var(--text-dim);">
+        Data Source: {{ report.metadata.data_source }} • Total Sample Size: N = {{ report.metadata.total_sample_size }} trials ({{ report.metadata.live_count }} live, {{ report.metadata.demo_count }} baseline)
+      </div>
+    </div>
+
+    <!-- Section 1: Abstract -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['1_abstract'].title }}
+      </h2>
+      <p style="font-size: 13.5px; line-height: 1.7; color: #cbd5e1; text-align: justify;">
+        {{ report.sections['1_abstract'].content }}
+      </p>
+    </div>
+
+    <!-- Section 2: Research Question -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['2_research_question'].title }}
+      </h2>
+      <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: #cbd5e1;">
+        {% for q in report.sections['2_research_question'].questions %}
+        <li style="margin-bottom: 6px;">{{ q }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Section 3: Project Objectives -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['3_objectives'].title }}
+      </h2>
+      <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: #cbd5e1;">
+        {% for obj in report.sections['3_objectives'].objective_list %}
+        <li style="margin-bottom: 6px;">{{ obj }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Section 4: AI Tools & Models Tested -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['4_ai_tools_tested'].title }}
+      </h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">{{ report.sections['4_ai_tools_tested'].notes }}</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        {% for m in report.sections['4_ai_tools_tested'].models %}
+        <span class="badge badge-demo" style="font-size: 12px; padding: 6px 12px;">{{ m }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Section 5: Dataset Categories -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['5_dataset_categories'].title }} (Total Problems: {{ report.sections['5_dataset_categories'].total_problems }})
+      </h2>
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Count</th>
+              <th>Curricular Topics Covered</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for b in report.sections['5_dataset_categories'].breakdown %}
+            <tr>
+              <td><strong style="color: #fff;">{{ b.topic }}</strong></td>
+              <td><span class="badge badge-primary">{{ b.count }} problems</span></td>
+              <td style="font-size: 12.5px; color: #cbd5e1;">{{ b.focus }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 6: Experimental Methodology -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['6_methodology'].title }}
+      </h2>
+      <p style="font-size: 13.5px; line-height: 1.7; color: #cbd5e1; text-align: justify;">
+        {{ report.sections['6_methodology'].content }}
+      </p>
+    </div>
+
+    <!-- Section 7: Prompt Versions -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['7_prompts'].title }}
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        {% for k, tmpl in report.sections['7_prompts'].templates.items() %}
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+          <strong style="color: #a5b4fc; font-size: 13px;">{{ tmpl.name }} ({{ tmpl.condition_code }})</strong>
+          <pre style="font-size: 11.5px; color: #cbd5e1; margin-top: 4px; white-space: pre-wrap; font-family: 'Fira Code', monospace;">{{ tmpl.template }}</pre>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Section 8: Accuracy Metrics & Scoring Rubric -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['8_metrics_rubric'].title }}
+      </h2>
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Evaluation Scale</th>
+              <th>Computational Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in report.sections['8_metrics_rubric'].rubric %}
+            <tr>
+              <td><strong style="color: #fff;">{{ r.metric }}</strong></td>
+              <td><code>{{ r.scale }}</code></td>
+              <td style="font-size: 12.5px; color: #cbd5e1;">{{ r.method }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 9: Results & Summary Tables -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['9_results'].title }}
+      </h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div style="background: rgba(15, 23, 42, 0.7); padding: 16px; border-radius: 8px;">
+          <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase;">OVERALL FINAL ACCURACY</div>
+          <div style="font-size: 26px; font-weight: 700; color: #38bdf8;">{{ report.sections['9_results'].overall.final_accuracy }}%</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">{{ report.sections['9_results'].overall.correct_count }} of {{ report.sections['9_results'].overall.total_runs }} trials correct</div>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.7); padding: 16px; border-radius: 8px;">
+          <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase;">MEAN STEP ACCURACY</div>
+          <div style="font-size: 26px; font-weight: 700; color: #34d399;">{{ report.sections['9_results'].overall.mean_step_accuracy }}%</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Average reasoning fidelity score</div>
+        </div>
+      </div>
+
+      <!-- Prompt Comparison Table -->
+      <h4 style="font-size: 14px; color: #fff; margin-bottom: 8px;">Prompt Conditioning Performance Breakdown</h4>
+      <div class="table-responsive" style="margin-bottom: 16px;">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Condition</th>
+              <th>Trials</th>
+              <th>Final Accuracy</th>
+              <th>Step Accuracy</th>
+              <th>Delta vs Plain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Plain Baseline</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.plain.total_runs }}</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.plain.final_accuracy }}%</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.plain.mean_step_accuracy }}%</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Step-by-Step Reasoning</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.step_by_step.total_runs }}</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.step_by_step.final_accuracy }}%</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.step_by_step.mean_step_accuracy }}%</td>
+              <td><strong>{{ report.sections['9_results'].prompt_comparison.deltas.step_vs_plain_accuracy_pp }} pp</strong></td>
+            </tr>
+            <tr>
+              <td>Self-Verification</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.self_verification.total_runs }}</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.self_verification.final_accuracy }}%</td>
+              <td>{{ report.sections['9_results'].prompt_comparison.self_verification.mean_step_accuracy }}%</td>
+              <td><strong>{{ report.sections['9_results'].prompt_comparison.deltas.verif_vs_plain_accuracy_pp }} pp</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 10: Error Analysis -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['10_error_analysis'].title }}
+      </h2>
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Occurrences</th>
+              <th>High Severity</th>
+              <th>Med Severity</th>
+              <th>Low Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for err in report.sections['10_error_analysis'].error_distribution %}
+            <tr>
+              <td><strong style="color: #fca5a5;">{{ err.category }}</strong></td>
+              <td><span class="badge badge-danger">{{ err.count }}</span></td>
+              <td>{{ err.high_count }}</td>
+              <td>{{ err.medium_count }}</td>
+              <td>{{ err.low_count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 11: Self-Verification Comparison -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['11_verification_analysis'].title }}
+      </h2>
+      <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6; margin-bottom: 12px;">
+        Across {{ report.sections['11_verification_analysis'].data.total_verification_runs }} paired verification checks, the pre-verification final-answer accuracy was 
+        <strong>{{ report.sections['11_verification_analysis'].data.pre_verification_accuracy }}%</strong>, shifting to 
+        <strong>{{ report.sections['11_verification_analysis'].data.post_verification_accuracy }}%</strong> post-verification 
+        (net percentage point delta: <strong>{{ report.sections['11_verification_analysis'].data.percentage_point_change }} pp</strong>, 
+        relative improvement: <strong>{{ report.sections['11_verification_analysis'].data.relative_pct_improvement }}%</strong>).
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 12px; border-radius: 6px; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #34d399;">{{ report.sections['11_verification_analysis'].data.fixed_count }}</div>
+          <div style="font-size: 11px; color: #cbd5e1;">Errors Fixed</div>
+        </div>
+        <div style="background: rgba(239, 68, 68, 0.1); padding: 12px; border-radius: 6px; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #f87171;">{{ report.sections['11_verification_analysis'].data.introduced_count }}</div>
+          <div style="font-size: 11px; color: #cbd5e1;">Errors Introduced</div>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 6px; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #fff;">{{ report.sections['11_verification_analysis'].data.unchanged_count }}</div>
+          <div style="font-size: 11px; color: #cbd5e1;">Unchanged Trials</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 12: Limitations & Responsible AI -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['12_limitations'].title }}
+      </h2>
+      <ul style="padding-left: 20px; font-size: 13px; line-height: 1.7; color: #cbd5e1;">
+        {% for lim in report.sections['12_limitations'].points %}
+        <li style="margin-bottom: 6px;">{{ lim }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Section 13: Empirical Conclusions -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['13_conclusions'].title }}
+      </h2>
+      <div style="background: rgba(99, 102, 241, 0.08); border-left: 4px solid var(--primary); padding: 18px; border-radius: 6px;">
+        <ul style="padding-left: 18px; font-size: 13.5px; line-height: 1.8; color: #f1f5f9;">
+          {% for conc in report.sections['13_conclusions'].conclusion_list %}
+          <li style="margin-bottom: 8px;">{{ conc }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 14: Appendix (Problem Catalog) -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+        {{ report.sections['14_appendix'].title }}
+      </h2>
+      <div class="table-responsive">
+        <table class="custom-table" style="font-size: 12px;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Topic</th>
+              <th>Diff</th>
+              <th>Statement</th>
+              <th>Reference Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in report.sections['14_appendix'].problems %}
+            <tr>
+              <td><strong>{{ p.id }}</strong></td>
+              <td>{{ p.topic }}</td>
+              <td>{{ p.difficulty }}</td>
+              <td style="max-width: 320px;">{{ p.statement }}</td>
+              <td style="font-family: 'Fira Code', monospace; color: #34d399;">{{ p.final_answer }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

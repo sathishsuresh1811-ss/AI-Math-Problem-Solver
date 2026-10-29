@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Error Analysis — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Mathematical Error Classification & Evidence Logging{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">11-Category Mathematical Error Taxonomy</div>
+      <div class="card-desc">Empirical categorization of AI failure modes with observable evidence</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+    {% for e in errors %}
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-weight: 700; color: #fff; font-size: 13.5px;">{{ e.category }}</span>
+        <span class="badge badge-danger">{{ e.count }} Detected</span>
+      </div>
+      <div style="display: flex; gap: 6px; font-size: 11px; color: var(--text-dim); margin-top: 6px;">
+        <span>High: <strong style="color: #f87171;">{{ e.high_count }}</strong></span> •
+        <span>Medium: <strong style="color: #fbbf24;">{{ e.medium_count }}</strong></span> •
+        <span>Low: <strong style="color: #34d399;">{{ e.low_count }}</strong></span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Confident but Incorrect Reasoning Rubric Card -->
+<div class="card" style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.25);">
+  <div class="card-header">
+    <div class="card-title" style="color: #f87171;">
+      ⚠️ Confident but Incorrect Reasoning: Observable Evaluation Rubric
+    </div>
+  </div>
+  <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-main); margin-bottom: 10px;">
+    In rigorous AI evaluation, researchers cannot access a black-box model’s hidden internal probabilities or subjective "confidence". 
+    Therefore, this application operationalizes <strong>Confident but Incorrect Reasoning</strong> using a transparent, observable linguistic rubric:
+  </p>
+  <ul style="padding-left: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+    <li><strong>Criterion 1:</strong> The model employs explicit categorical assertions of certainty (e.g., <em>"clearly"</em>, <em>"obviously"</em>, <em>"without doubt"</em>, <em>"definitely"</em>, <em>"it is guaranteed that"</em>, <em>"trivially"</em>).</li>
+    <li><strong>Criterion 2:</strong> The terminal mathematical conclusion or critical lemma is empirically verified as incorrect against the canonical reference solution.</li>
+    <li><strong>Impact:</strong> Pedagogically hazardous because student learners are more prone to accept flawed reasoning when delivered with unearned authority.</li>
+  </ul>
+</div>
+
+<!-- Recent Error Evidence Log -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Recent Empirical Error Classifications Log</div>
+      <div class="card-desc">Specific failure evidence logged during automated benchmark runs</div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Provider</th>
+          <th>Condition</th>
+          <th>Error Category</th>
+          <th>Severity</th>
+          <th>Evidence & Rationale</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if recent_errors %}
+          {% for err in recent_errors %}
+          <tr>
+            <td>
+              <a href="{{ url_for('problem_detail', prob_id=err.problem_id) }}" style="color: #fff; font-weight: 700; text-decoration: none;">
+                {{ err.problem_id }}
+              </a>
+            </td>
+            <td>{{ err.provider }}</td>
+            <td><span class="badge badge-primary">{{ err.prompt_condition | replace('_', ' ') | title }}</span></td>
+            <td><strong style="color: #fca5a5;">{{ err.category }}</strong></td>
+            <td>
+              <span class="badge {% if err.severity == 'high' %}badge-danger{% elif err.severity == 'medium' %}badge-warning{% else %}badge-success{% endif %}">
+                {{ err.severity }}
+              </span>
+            </td>
+            <td style="font-size: 12px; color: #cbd5e1; max-width: 320px;">
+              {{ err.evidence }}
+            </td>
+            <td>
+              <button class="btn btn-outline btn-sm" onclick="openResultModal('{{ err.result_id }}')">Inspect</button>
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 30px; color: var(--text-dim);">
+              No mathematical errors logged.
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

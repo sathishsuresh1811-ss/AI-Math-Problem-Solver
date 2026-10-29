@@ -1,0 +1,1282 @@
+id,experiment_id,problem_id,provider,model,prompt_condition,exact_prompt,ai_response,parsed_answer,is_demo,is_correct,step_accuracy,latency_ms,timestamp,status,verification_initial_answer,verification_fixed_error,requires_human_review,topic,difficulty,statement,reference_answer,reviewer_name,corrected_is_correct,review_notes
+res-0f425cbceda5,exp-baseline-1791993686,ALG-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Solve the linear equation for x: 3x - 7 = 11.. Give your answer.,"To solve this: Solve the linear equation for x: 3x - 7 = 11.
+Final Answer: 6",6,1,1,25.0,8,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Solve the linear equation for x: 3x - 7 = 11.,6,,,
+res-2d5b4ff4a556,exp-baseline-1791993686,ALG-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Solve the linear equation for x: 3x - 7 = 11.","Problem: Solve the linear equation for x: 3x - 7 = 11.
+
+Relevant Formula/Theorem: ax + b = c => ax = c - b => x = (c - b) / a
+
+Step-by-step Solution:
+Step 1: Add 7 to both sides of the equation to isolate the variable term.
+Calculation / Result: 3x = 18
+Applied Rule: Addition property of equality
+
+Step 2: Divide both sides by 3 to solve for x.
+Calculation / Result: x = 6
+Applied Rule: Division property of equality
+
+Conclusion:
+Final Answer: 6",6,1,1,100.0,6,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Solve the linear equation for x: 3x - 7 = 11.,6,,,
+res-bca57b93cf5e,exp-baseline-1791993686,ALG-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Solve the linear equation for x: 3x - 7 = 11.","Initial Mathematical Derivation for: Solve the linear equation for x: 3x - 7 = 11.
+
+Formula: ax + b = c => ax = c - b => x = (c - b) / a
+
+Step 1: Add 7 to both sides of the equation to isolate the variable term. => 3x = 18
+Step 2: Divide both sides by 3 to solve for x. => x = 6
+Derived Answer: 6
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 6 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 6",6,1,1,100.0,5,2026-10-14T21:31:26.606634,success,6,0,0,Algebra,Easy,Solve the linear equation for x: 3x - 7 = 11.,6,,,
+res-e32e7a890017,exp-baseline-1791993686,ALG-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Factor the quadratic expression completely: x^2 - 9x + 20.. Give your answer.,"To solve this: Factor the quadratic expression completely: x^2 - 9x + 20.
+Final Answer: (x - 4)(x - 5)",(x - 4)(x - 5),1,1,50.0,6,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Factor the quadratic expression completely: x^2 - 9x + 20.,(x - 4)(x - 5),,,
+res-ae019c14cad4,exp-baseline-1791993686,ALG-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Factor the quadratic expression completely: x^2 - 9x + 20.","Problem: Factor the quadratic expression completely: x^2 - 9x + 20.
+
+Relevant Formula/Theorem: x^2 - (p + q)x + pq = (x - p)(x - q)
+
+Step-by-step Solution:
+Step 1: Find two integers whose product is 20 and whose sum is -9.
+Calculation / Result: Numbers are -4 and -5 since (-4)*(-5) = 20 and (-4) + (-5) = -9
+Applied Rule: Vieta's product and sum relations
+
+Step 2: Write the quadratic expression in factored binomial form.
+Calculation / Result: (x - 4)(x - 5)
+Applied Rule: Factored form (x + p)(x + q)
+
+Conclusion:
+Final Answer: (x - 4)(x - 5)",(x - 4)(x - 5),1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Factor the quadratic expression completely: x^2 - 9x + 20.,(x - 4)(x - 5),,,
+res-1b2d065cc59c,exp-baseline-1791993686,ALG-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Factor the quadratic expression completely: x^2 - 9x + 20.","Initial Mathematical Derivation for: Factor the quadratic expression completely: x^2 - 9x + 20.
+
+Formula: x^2 - (p + q)x + pq = (x - p)(x - q)
+
+Step 1: Find two integers whose product is 20 and whose sum is -9. => Numbers are -4 and -5 since (-4)*(-5) = 20 and (-4) + (-5) = -9
+Step 2: Write the quadratic expression in factored binomial form. => (x - 4)(x - 5)
+Derived Answer: (x - 4)(x - 5)
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result (x - 4)(x - 5) by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: (x - 4)(x - 5)",(x - 4)(x - 5),1,1,100.0,5,2026-10-14T21:31:26.606634,success,(x - 4)(x - 5),0,0,Algebra,Easy,Factor the quadratic expression completely: x^2 - 9x + 20.,(x - 4)(x - 5),,,
+res-7df996693b6e,exp-baseline-1791993686,ALG-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1. Give your answer.","To solve this: Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1
+Final Answer: x = 2, y = 3","x = 2, y = 3",1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,"Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1","x = 2, y = 3",,,
+res-b503a33bcdde,exp-baseline-1791993686,ALG-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1","Problem: Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1
+
+Relevant Formula/Theorem: Substitution or Elimination method for 2x2 linear systems
+
+Step-by-step Solution:
+Step 1: Express x in terms of y from the second equation: x = y - 1.
+Calculation / Result: x = y - 1
+Applied Rule: Isolation of variable
+
+Step 2: Substitute x into the first equation: 2(y - 1) + 3y = 13.
+Calculation / Result: 2y - 2 + 3y = 13 => 5y = 15 => y = 3
+Applied Rule: Substitution method
+
+Step 3: Substitute y = 3 back into x = y - 1 to find x.
+Calculation / Result: x = 3 - 1 = 2
+Applied Rule: Back substitution
+
+Conclusion:
+Final Answer: x = 2, y = 3","x = 2, y = 3",1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,"Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1","x = 2, y = 3",,,
+res-6455aa7c3c18,exp-baseline-1791993686,ALG-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1","Initial Mathematical Derivation for: Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1
+
+Formula: Substitution or Elimination method for 2x2 linear systems
+
+Step 1: Express x in terms of y from the second equation: x = y - 1. => x = y - 1
+Step 2: Substitute x into the first equation: 2(y - 1) + 3y = 13. => 2y - 2 + 3y = 13 => 5y = 15 => y = 3
+Step 3: Substitute y = 3 back into x = y - 1 to find x. => x = 3 - 1 = 2
+Derived Answer: x = 2, y = 3
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result x = 2, y = 3 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: x = 2, y = 3","x = 2, y = 3",1,1,100.0,5,2026-10-14T21:31:26.606634,success,"x = 2, y = 3",0,0,Algebra,Medium,"Solve the system of linear equations for x and y:
+1) 2x + 3y = 13
+2) x - y = -1","x = 2, y = 3",,,
+res-9a92ee0f5f6a,exp-baseline-1791993686,ALG-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.. Give your answer.,"To solve this: Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.
+Final Answer: x = 2, x = 1/2","x = 2, x = 1/2",1,1,16.67,6,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.,"x = 2, x = 1/2",,,
+res-fa509b8bfe6d,exp-baseline-1791993686,ALG-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.","Problem: Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.
+
+Relevant Formula/Theorem: x = (-b +/- sqrt(b^2 - 4ac)) / (2a)
+
+Step-by-step Solution:
+Step 1: Identify coefficients: a = 2, b = -5, c = 2, and compute the discriminant.
+Calculation / Result: D = (-5)^2 - 4(2)(2) = 25 - 16 = 9
+Applied Rule: Discriminant D = b^2 - 4ac
+
+Step 2: Apply the quadratic formula using sqrt(9) = 3.
+Calculation / Result: x = (5 +/- 3) / 4
+Applied Rule: Quadratic formula
+
+Step 3: Compute both solutions.
+Calculation / Result: x1 = (5 + 3)/4 = 8/4 = 2; x2 = (5 - 3)/4 = 2/4 = 1/2
+Applied Rule: Simplification
+
+Conclusion:
+Final Answer: x = 2, x = 1/2","x = 2, x = 1/2",1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.,"x = 2, x = 1/2",,,
+res-c61eb6b0d1d0,exp-baseline-1791993686,ALG-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.","Initial Mathematical Derivation for: Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.
+
+Formula: x = (-b +/- sqrt(b^2 - 4ac)) / (2a)
+
+Step 1: Identify coefficients: a = 2, b = -5, c = 2, and compute the discriminant. => D = (-5)^2 - 4(2)(2) = 25 - 16 = 9
+Step 2: Apply the quadratic formula using sqrt(9) = 3. => x = (5 +/- 3) / 4
+Step 3: Compute both solutions. => x1 = (5 + 3)/4 = 8/4 = 2; x2 = (5 - 3)/4 = 2/4 = 1/2
+Derived Answer: x = 2, x = 1/2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result x = 2, x = 1/2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: x = 2, x = 1/2","x = 2, x = 1/2",1,1,100.0,5,2026-10-14T21:31:26.606634,success,"x = 2, x = 1/2",0,0,Algebra,Medium,Find all real solutions to the quadratic equation: 2x^2 - 5x + 2 = 0.,"x = 2, x = 1/2",,,
+res-cbc0f0e79636,exp-baseline-1791993686,ALG-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.. Give your answer.,"To solve this: Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.
+Final Answer: 2",2,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.,2,,,
+res-124fd1d13a04,exp-baseline-1791993686,ALG-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.","Problem: Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.
+
+Relevant Formula/Theorem: (a^m * a^n) = a^(m+n) and (a^m)^k = a^(m*k)
+
+Step-by-step Solution:
+Step 1: Express all terms with base 2: 4 = 2^2 so 4^2 = 2^4; 8 = 2^3 so 8^2 = 2^6.
+Calculation / Result: Numerator: 2^3 * 2^4 = 2^7; Denominator: 2^6
+Applied Rule: Power of a power rule
+
+Step 2: Divide powers with the same base by subtracting exponents.
+Calculation / Result: 2^(7 - 6) = 2^1 = 2
+Applied Rule: Quotient of powers rule: a^m / a^n = a^(m-n)
+
+Conclusion:
+Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.,2,,,
+res-e11d3893f0d9,exp-baseline-1791993686,ALG-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.","Initial Mathematical Derivation for: Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.
+
+Formula: (a^m * a^n) = a^(m+n) and (a^m)^k = a^(m*k)
+
+Step 1: Express all terms with base 2: 4 = 2^2 so 4^2 = 2^4; 8 = 2^3 so 8^2 = 2^6. => Numerator: 2^3 * 2^4 = 2^7; Denominator: 2^6
+Step 2: Divide powers with the same base by subtracting exponents. => 2^(7 - 6) = 2^1 = 2
+Derived Answer: 2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,2,0,0,Algebra,Medium,Simplify the exponential expression to a single integer: (2^3 * 4^2) / 8^2.,2,,,
+res-16c9b27bde37,exp-baseline-1791993686,ALG-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.. Give your answer.,"Solving Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.
+We get x^2 - 2x = 8, so (x-4)(x+2) = 0.
+Therefore, the answers are x = 4 and x = -2.
+Final Answer: 4, -2","4, -2",1,1,12.5,5,2026-10-14T21:31:26.606634,success,,0,1,Algebra,Medium,Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.,4,,,
+res-5d027472b4bb,exp-baseline-1791993686,ALG-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.","Problem: Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.
+
+Relevant Formula/Theorem: log_b(M) + log_b(N) = log_b(M*N); log_b(Y) = k => Y = b^k
+
+Step-by-step Solution:
+Step 1: Combine the logarithms using the product property.
+Calculation / Result: log2(x(x - 2)) = 3
+Applied Rule: log_b(u) + log_b(v) = log_b(uv)
+
+Step 2: Convert logarithmic equation into exponential form.
+Calculation / Result: x(x - 2) = 2^3 => x^2 - 2x = 8 => x^2 - 2x - 8 = 0
+Applied Rule: Definition of logarithm
+
+Step 3: Factor the quadratic equation.
+Calculation / Result: (x - 4)(x + 2) = 0 => x = 4 or x = -2
+Applied Rule: Factoring quadratics
+
+Step 4: Check the domain of original logarithms (x > 2). Reject extraneous root x = -2.
+Calculation / Result: x = 4 is the only valid solution
+Applied Rule: Logarithm domain constraint: argument must be strictly positive
+
+Conclusion:
+Final Answer: 4",4,1,1,100.0,7,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Medium,Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.,4,,,
+res-e32b1b3e8473,exp-baseline-1791993686,ALG-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.","Initial Mathematical Derivation for: Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.
+
+Formula: log_b(M) + log_b(N) = log_b(M*N); log_b(Y) = k => Y = b^k
+
+Derivation:
+log2(x(x - 2)) = 3 => x^2 - 2x - 8 = 0 => (x - 4)(x + 2) = 0.
+Initial candidate solutions: x = 4 and x = -2.
+The answer is 4, -2.
+
+--- VERIFICATION ---
+Independent Check:
+1. Test x = -2 in original log arguments: log2(-2) is undefined because logarithm domain requires x > 0.
+2. Error identified! x = -2 is an extraneous root and must be rejected.
+3. Test x = 4: log2(4) + log2(4 - 2) = 2 + 1 = 3. Validated.
+Verified Final Answer: 4",4,1,1,62.5,5,2026-10-14T21:31:26.606634,success,"4, -2",0,0,Algebra,Medium,Solve for x in the logarithmic equation: log2(x) + log2(x - 2) = 3.,4,,,
+res-f48d0aa136ae,exp-baseline-1791993686,ALG-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.. Give your answer.","To solve this: Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.
+Final Answer: (3, 4) and (4, 3)","(3, 4) and (4, 3)",1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,"Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.","(3, 4) and (4, 3)",,,
+res-8bb8317bd21f,exp-baseline-1791993686,ALG-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.","Problem: Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.
+
+Relevant Formula/Theorem: (x + y)^2 = x^2 + 2xy + y^2
+
+Step-by-step Solution:
+Step 1: Square the first equation: (x + y)^2 = 7^2 = 49.
+Calculation / Result: x^2 + 2xy + y^2 = 49
+Applied Rule: Square of a binomial
+
+Step 2: Substitute x^2 + y^2 = 25 to find the product xy.
+Calculation / Result: 25 + 2xy = 49 => 2xy = 24 => xy = 12
+Applied Rule: Algebraic substitution
+
+Step 3: Form the quadratic equation whose roots are x and y: t^2 - 7t + 12 = 0.
+Calculation / Result: (t - 3)(t - 4) = 0 => t = 3, 4
+Applied Rule: Vieta's root theorem
+
+Step 4: Conclude the ordered pairs (x, y).
+Calculation / Result: (x, y) = (3, 4) or (4, 3)
+Applied Rule: Symmetric solutions
+
+Conclusion:
+Final Answer: (3, 4) and (4, 3)","(3, 4) and (4, 3)",1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,"Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.","(3, 4) and (4, 3)",,,
+res-a1c05c0796fd,exp-baseline-1791993686,ALG-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.","Initial Mathematical Derivation for: Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.
+
+Formula: (x + y)^2 = x^2 + 2xy + y^2
+
+Step 1: Square the first equation: (x + y)^2 = 7^2 = 49. => x^2 + 2xy + y^2 = 49
+Step 2: Substitute x^2 + y^2 = 25 to find the product xy. => 25 + 2xy = 49 => 2xy = 24 => xy = 12
+Step 3: Form the quadratic equation whose roots are x and y: t^2 - 7t + 12 = 0. => (t - 3)(t - 4) = 0 => t = 3, 4
+Step 4: Conclude the ordered pairs (x, y). => (x, y) = (3, 4) or (4, 3)
+Derived Answer: (3, 4) and (4, 3)
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result (3, 4) and (4, 3) by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: (3, 4) and (4, 3)","(3, 4) and (4, 3)",1,1,100.0,5,2026-10-14T21:31:26.606634,success,"(3, 4) and (4, 3)",0,0,Algebra,Hard,"Find all pairs of real numbers (x, y) that satisfy the system: x + y = 7 and x^2 + y^2 = 25.","(3, 4) and (4, 3)",,,
+res-1a4a25c6dac0,exp-baseline-1791993686,ALG-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Expand and simplify the algebraic square: (2x + 3y)^2.. Give your answer.,"To solve this: Expand and simplify the algebraic square: (2x + 3y)^2.
+Final Answer: 4x^2 + 12xy + 9y^2",4x**2 + 12xy + 9y**2,1,1,33.33,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Expand and simplify the algebraic square: (2x + 3y)^2.,4x^2 + 12xy + 9y^2,,,
+res-ca5e0e035c34,exp-baseline-1791993686,ALG-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Expand and simplify the algebraic square: (2x + 3y)^2.","Problem: Expand and simplify the algebraic square: (2x + 3y)^2.
+
+Relevant Formula/Theorem: (a + b)^2 = a^2 + 2ab + b^2
+
+Step-by-step Solution:
+Step 1: Identify a = 2x and b = 3y.
+Calculation / Result: a^2 = (2x)^2 = 4x^2, b^2 = (3y)^2 = 9y^2
+Applied Rule: Monomial squaring
+
+Step 2: Calculate the cross term 2ab.
+Calculation / Result: 2*(2x)*(3y) = 12xy
+Applied Rule: Binomial cross product
+
+Step 3: Sum the components: a^2 + 2ab + b^2.
+Calculation / Result: 4x^2 + 12xy + 9y^2
+Applied Rule: Binomial expansion
+
+Conclusion:
+Final Answer: 4x^2 + 12xy + 9y^2",4x**2 + 12xy + 9y**2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Easy,Expand and simplify the algebraic square: (2x + 3y)^2.,4x^2 + 12xy + 9y^2,,,
+res-a2021b0889ea,exp-baseline-1791993686,ALG-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Expand and simplify the algebraic square: (2x + 3y)^2.","Initial Mathematical Derivation for: Expand and simplify the algebraic square: (2x + 3y)^2.
+
+Formula: (a + b)^2 = a^2 + 2ab + b^2
+
+Step 1: Identify a = 2x and b = 3y. => a^2 = (2x)^2 = 4x^2, b^2 = (3y)^2 = 9y^2
+Step 2: Calculate the cross term 2ab. => 2*(2x)*(3y) = 12xy
+Step 3: Sum the components: a^2 + 2ab + b^2. => 4x^2 + 12xy + 9y^2
+Derived Answer: 4x^2 + 12xy + 9y^2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 4x^2 + 12xy + 9y^2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 4x^2 + 12xy + 9y^2",4x**2 + 12xy + 9y**2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,4x**2 + 12xy + 9y**2,0,0,Algebra,Easy,Expand and simplify the algebraic square: (2x + 3y)^2.,4x^2 + 12xy + 9y^2,,,
+res-2b7c914840eb,exp-baseline-1791993686,ALG-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).. Give your answer.,"To solve this: Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).
+Final Answer: No solution",No solution,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).,No solution,,,
+res-924700d5f731,exp-baseline-1791993686,ALG-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).","Problem: Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).
+
+Relevant Formula/Theorem: Multiply by LCD = (x - 1)(x + 2) provided x != 1, x != -2
+
+Step-by-step Solution:
+Step 1: Factor the denominator of the right hand side: x^2 + x - 2 = (x - 1)(x + 2). Note domain restrictions: x != 1 and x != -2.
+Calculation / Result: LCD = (x - 1)(x + 2)
+Applied Rule: Factoring quadratics & domain restrictions
+
+Step 2: Multiply both sides by (x - 1)(x + 2).
+Calculation / Result: 2(x + 2) + 3(x - 1) = 5x
+Applied Rule: Clearing denominators
+
+Step 3: Expand and combine like terms.
+Calculation / Result: 2x + 4 + 3x - 3 = 5x => 5x + 1 = 5x
+Applied Rule: Distributive property
+
+Step 4: Subtract 5x from both sides yielding 1 = 0, an algebraic impossibility.
+Calculation / Result: 1 = 0 (Contradiction => No solution exists)
+Applied Rule: Inconsistent equation
+
+Conclusion:
+Final Answer: No solution",No solution,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).,No solution,,,
+res-293807125b9b,exp-baseline-1791993686,ALG-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).","Initial Mathematical Derivation for: Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).
+
+Formula: Multiply by LCD = (x - 1)(x + 2) provided x != 1, x != -2
+
+Step 1: Factor the denominator of the right hand side: x^2 + x - 2 = (x - 1)(x + 2). Note domain restrictions: x != 1 and x != -2. => LCD = (x - 1)(x + 2)
+Step 2: Multiply both sides by (x - 1)(x + 2). => 2(x + 2) + 3(x - 1) = 5x
+Step 3: Expand and combine like terms. => 2x + 4 + 3x - 3 = 5x => 5x + 1 = 5x
+Step 4: Subtract 5x from both sides yielding 1 = 0, an algebraic impossibility. => 1 = 0 (Contradiction => No solution exists)
+Derived Answer: No solution
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result No solution by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: No solution",No solution,1,1,100.0,5,2026-10-14T21:31:26.606634,success,No solution,0,0,Algebra,Hard,Solve the rational equation for x: 2/(x - 1) + 3/(x + 2) = 5x / (x^2 + x - 2).,No solution,,,
+res-a29284b744ce,exp-baseline-1791993686,ALG-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + .... Give your answer.,"To solve this: Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...
+Final Answer: 9",9,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...,9,,,
+res-4f4200195868,exp-baseline-1791993686,ALG-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...","Problem: Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...
+
+Relevant Formula/Theorem: S = a / (1 - r) for |r| < 1
+
+Step-by-step Solution:
+Step 1: Identify the first term a and compute the common ratio r.
+Calculation / Result: a = 6; r = 2/6 = 1/3
+Applied Rule: Common ratio r = T2 / T1
+
+Step 2: Verify convergence condition: |r| = 1/3 < 1.
+Calculation / Result: Series converges
+Applied Rule: Convergence criterion |r| < 1
+
+Step 3: Apply the infinite sum formula S = a / (1 - r).
+Calculation / Result: S = 6 / (1 - 1/3) = 6 / (2/3) = 6 * (3/2) = 18/2 = 9
+Applied Rule: Infinite geometric series sum formula
+
+Conclusion:
+Final Answer: 9",9,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Algebra,Hard,Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...,9,,,
+res-a9e83ec7ce74,exp-baseline-1791993686,ALG-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...","Initial Mathematical Derivation for: Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...
+
+Formula: S = a / (1 - r) for |r| < 1
+
+Step 1: Identify the first term a and compute the common ratio r. => a = 6; r = 2/6 = 1/3
+Step 2: Verify convergence condition: |r| = 1/3 < 1. => Series converges
+Step 3: Apply the infinite sum formula S = a / (1 - r). => S = 6 / (1 - 1/3) = 6 / (2/3) = 6 * (3/2) = 18/2 = 9
+Derived Answer: 9
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 9 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 9",9,1,1,100.0,5,2026-10-14T21:31:26.606634,success,9,0,0,Algebra,Hard,Calculate the exact sum of the infinite geometric series: 6 + 2 + 2/3 + 2/9 + ...,9,,,
+res-3ecb30bfed2e,exp-baseline-1791993686,PROB-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?. Give your answer.,"To solve this: A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?
+Final Answer: 1/2",1/2,1,1,16.67,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?,1/2,,,
+res-7f20584c33ec,exp-baseline-1791993686,PROB-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?","Problem: A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?
+
+Relevant Formula/Theorem: P(E) = n(E) / n(S)
+
+Step-by-step Solution:
+Step 1: List the sample space of a standard 6-sided die.
+Calculation / Result: S = {1, 2, 3, 4, 5, 6}, so n(S) = 6
+Applied Rule: Sample space definition
+
+Step 2: Identify prime numbers in the sample space (numbers > 1 divisible only by 1 and itself).
+Calculation / Result: Primes = {2, 3, 5}, so n(E) = 3
+Applied Rule: Definition of prime numbers
+
+Step 3: Compute the probability ratio.
+Calculation / Result: P(E) = 3/6 = 1/2 = 0.5
+Applied Rule: Classical probability formula
+
+Conclusion:
+Final Answer: 1/2",1/2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?,1/2,,,
+res-d71228b6df56,exp-baseline-1791993686,PROB-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?","Initial Mathematical Derivation for: A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?
+
+Formula: P(E) = n(E) / n(S)
+
+Step 1: List the sample space of a standard 6-sided die. => S = {1, 2, 3, 4, 5, 6}, so n(S) = 6
+Step 2: Identify prime numbers in the sample space (numbers > 1 divisible only by 1 and itself). => Primes = {2, 3, 5}, so n(E) = 3
+Step 3: Compute the probability ratio. => P(E) = 3/6 = 1/2 = 0.5
+Derived Answer: 1/2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1/2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1/2",1/2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1/2,0,0,Probability and Statistics,Easy,A standard fair 6-sided die is rolled once. What is the probability of rolling a prime number?,1/2,,,
+res-df7af11196d0,exp-baseline-1791993686,PROB-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.. Give your answer.","To solve this: Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.
+Final Answer: 8",8,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,"Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.",8,,,
+res-06144142bdaa,exp-baseline-1791993686,PROB-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.","Problem: Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.
+
+Relevant Formula/Theorem: x_bar = (sum(x_i)) / n
+
+Step-by-step Solution:
+Step 1: Count the number of observations n.
+Calculation / Result: n = 7
+Applied Rule: Sample size count
+
+Step 2: Calculate the sum of all observations.
+Calculation / Result: 4 + 7 + 7 + 8 + 9 + 10 + 11 = 56
+Applied Rule: Summation
+
+Step 3: Divide the sum by n.
+Calculation / Result: 56 / 7 = 8
+Applied Rule: Mean formula
+
+Conclusion:
+Final Answer: 8",8,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,"Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.",8,,,
+res-94bdd6e7c111,exp-baseline-1791993686,PROB-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.","Initial Mathematical Derivation for: Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.
+
+Formula: x_bar = (sum(x_i)) / n
+
+Step 1: Count the number of observations n. => n = 7
+Step 2: Calculate the sum of all observations. => 4 + 7 + 7 + 8 + 9 + 10 + 11 = 56
+Step 3: Divide the sum by n. => 56 / 7 = 8
+Derived Answer: 8
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 8 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 8",8,1,1,100.0,5,2026-10-14T21:31:26.606634,success,8,0,0,Probability and Statistics,Easy,"Find the arithmetic mean of the dataset: 4, 7, 7, 8, 9, 10, 11.",8,,,
+res-185c7a3f4b2d,exp-baseline-1791993686,PROB-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?. Give your answer.,"To solve this: Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?
+Final Answer: 1/6",1/6,1,1,16.67,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?,1/6,,,
+res-c4723fd5c21f,exp-baseline-1791993686,PROB-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?","Problem: Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?
+
+Relevant Formula/Theorem: P(Sum = 7) = n(outcomes with sum 7) / total outcomes
+
+Step-by-step Solution:
+Step 1: Calculate total possible outcomes for two fair 6-sided dice.
+Calculation / Result: 6 * 6 = 36
+Applied Rule: Multiplication rule of counting
+
+Step 2: Enumerate pairs (d1, d2) that sum to 7.
+Calculation / Result: Favorable pairs: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) => 6 outcomes
+Applied Rule: Systematic enumeration
+
+Step 3: Compute the probability ratio and simplify.
+Calculation / Result: 6 / 36 = 1/6
+Applied Rule: Classical probability
+
+Conclusion:
+Final Answer: 1/6",1/6,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?,1/6,,,
+res-160908c84de9,exp-baseline-1791993686,PROB-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?","Initial Mathematical Derivation for: Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?
+
+Formula: P(Sum = 7) = n(outcomes with sum 7) / total outcomes
+
+Step 1: Calculate total possible outcomes for two fair 6-sided dice. => 6 * 6 = 36
+Step 2: Enumerate pairs (d1, d2) that sum to 7. => Favorable pairs: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) => 6 outcomes
+Step 3: Compute the probability ratio and simplify. => 6 / 36 = 1/6
+Derived Answer: 1/6
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1/6 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1/6",1/6,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1/6,0,0,Probability and Statistics,Medium,Two standard fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers shown is equal to 7?,1/6,,,
+res-9c6698161d2f,exp-baseline-1791993686,PROB-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?. Give your answer.","To solve this: In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?
+Final Answer: 1/3",1/3,1,1,50.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,"In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?",1/3,,,
+res-4b0642eae016,exp-baseline-1791993686,PROB-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?","Problem: In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?
+
+Relevant Formula/Theorem: P(B | S) = P(B and S) / P(S) = n(B and S) / n(S)
+
+Step-by-step Solution:
+Step 1: Identify the given conditioned event: the student plays soccer, so n(S) = 18.
+Calculation / Result: Restricted sample space size = 18
+Applied Rule: Conditioning set definition
+
+Step 2: Identify students who play both soccer and basketball: n(B and S) = 6.
+Calculation / Result: Intersection size = 6
+Applied Rule: Intersection of events
+
+Step 3: Compute conditional probability P(B | S) = 6 / 18.
+Calculation / Result: 6 / 18 = 1/3
+Applied Rule: P(B | S) = n(B and S) / n(S)
+
+Conclusion:
+Final Answer: 1/3",1/3,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,"In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?",1/3,,,
+res-3466afcca7df,exp-baseline-1791993686,PROB-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?","Initial Mathematical Derivation for: In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?
+
+Formula: P(B | S) = P(B and S) / P(S) = n(B and S) / n(S)
+
+Step 1: Identify the given conditioned event: the student plays soccer, so n(S) = 18. => Restricted sample space size = 18
+Step 2: Identify students who play both soccer and basketball: n(B and S) = 6. => Intersection size = 6
+Step 3: Compute conditional probability P(B | S) = 6 / 18. => 6 / 18 = 1/3
+Derived Answer: 1/3
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1/3 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1/3",1/3,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1/3,0,0,Probability and Statistics,Medium,"In a group of 30 students, 18 play soccer, 12 play basketball, and 6 play both sports. If a student chosen at random plays soccer, what is the probability that they also play basketball?",1/3,,,
+res-2a10af685035,exp-baseline-1791993686,PROB-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?. Give your answer.,"To solve this: In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?
+Final Answer: 56",56,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?,56,,,
+res-c0f70aabdf04,exp-baseline-1791993686,PROB-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?","Problem: In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?
+
+Relevant Formula/Theorem: C(n, k) = n! / (k! * (n - k)!)
+
+Step-by-step Solution:
+Step 1: Set up combination formula with n = 8 and k = 3.
+Calculation / Result: C(8, 3) = 8! / (3! * 5!)
+Applied Rule: Combinations formula
+
+Step 2: Cancel out 5! from numerator and denominator.
+Calculation / Result: (8 * 7 * 6) / (3 * 2 * 1)
+Applied Rule: Factorial cancellation
+
+Step 3: Simplify the fraction (3 * 2 * 1 = 6 cancels with 6).
+Calculation / Result: 8 * 7 = 56
+Applied Rule: Arithmetic simplification
+
+Conclusion:
+Final Answer: 56",56,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?,56,,,
+res-2f27a191bdc0,exp-baseline-1791993686,PROB-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?","Initial Mathematical Derivation for: In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?
+
+Formula: C(n, k) = n! / (k! * (n - k)!)
+
+Step 1: Set up combination formula with n = 8 and k = 3. => C(8, 3) = 8! / (3! * 5!)
+Step 2: Cancel out 5! from numerator and denominator. => (8 * 7 * 6) / (3 * 2 * 1)
+Step 3: Simplify the fraction (3 * 2 * 1 = 6 cancels with 6). => 8 * 7 = 56
+Derived Answer: 56
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 56 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 56",56,1,1,100.0,5,2026-10-14T21:31:26.606634,success,56,0,0,Probability and Statistics,Medium,In how many distinct ways can a committee of 3 people be chosen from a group of 8 candidates?,56,,,
+res-df1132d85795,exp-baseline-1791993686,PROB-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.. Give your answer.","To solve this: A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.
+Final Answer: 1",1,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.",1,,,
+res-fd989afa950f,exp-baseline-1791993686,PROB-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.","Problem: A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.
+
+Relevant Formula/Theorem: E(X) = sum(x_i * P(X = x_i))
+
+Step-by-step Solution:
+Step 1: Determine outcomes, monetary payoffs, and their respective probabilities.
+Calculation / Result: P(6) = 1/6, payoff = +12; P(odd) = 3/6 = 1/2, payoff = +2; P(2 or 4) = 2/6 = 1/3, payoff = -6
+Applied Rule: Discrete probability distribution table
+
+Step 2: Multiply each payoff by its probability.
+Calculation / Result: (12 * 1/6) = 2; (2 * 3/6) = 1; (-6 * 2/6) = -2
+Applied Rule: x_i * P(x_i)
+
+Step 3: Sum the weighted values.
+Calculation / Result: 2 + 1 + (-2) = 1
+Applied Rule: Expectation definition
+
+Conclusion:
+Final Answer: 1",1,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.",1,,,
+res-8e4daf9085da,exp-baseline-1791993686,PROB-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.","Initial Mathematical Derivation for: A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.
+
+Formula: E(X) = sum(x_i * P(X = x_i))
+
+Step 1: Determine outcomes, monetary payoffs, and their respective probabilities. => P(6) = 1/6, payoff = +12; P(odd) = 3/6 = 1/2, payoff = +2; P(2 or 4) = 2/6 = 1/3, payoff = -6
+Step 2: Multiply each payoff by its probability. => (12 * 1/6) = 2; (2 * 3/6) = 1; (-6 * 2/6) = -2
+Step 3: Sum the weighted values. => 2 + 1 + (-2) = 1
+Derived Answer: 1
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1",1,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1,0,0,Probability and Statistics,Hard,"A game involves rolling a fair six-sided die once. If a 6 is rolled, the player wins $12. If an odd number (1, 3, or 5) is rolled, the player wins $2. If a 2 or 4 is rolled, the player loses $6 (-$6). Find the expected value E(X) of the game in dollars.",1,,,
+res-515f56a0303d,exp-baseline-1791993686,PROB-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.. Give your answer.","To solve this: Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.
+Final Answer: 4",4,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.",4,,,
+res-74c7fb290e23,exp-baseline-1791993686,PROB-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.","Problem: Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.
+
+Relevant Formula/Theorem: sigma^2 = sum((x_i - mu)^2) / N
+
+Step-by-step Solution:
+Step 1: Compute the population mean mu for N = 8.
+Calculation / Result: mu = (2 + 4 + 4 + 4 + 5 + 5 + 7 + 9) / 8 = 40 / 8 = 5
+Applied Rule: Population mean formula
+
+Step 2: Compute deviations (x_i - mu) and their squares (x_i - mu)^2.
+Calculation / Result: Squares: (2-5)^2=9, (4-5)^2=1, 1, 1, (5-5)^2=0, 0, (7-5)^2=4, (9-5)^2=16
+Applied Rule: Squared deviations from mean
+
+Step 3: Sum the squared deviations.
+Calculation / Result: Sum of squared deviations = 9 + 1 + 1 + 1 + 0 + 0 + 4 + 16 = 32
+Applied Rule: Sum of squares
+
+Step 4: Divide by population size N = 8.
+Calculation / Result: sigma^2 = 32 / 8 = 4
+Applied Rule: Population variance definition
+
+Conclusion:
+Final Answer: 4",4,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.",4,,,
+res-690340a40388,exp-baseline-1791993686,PROB-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.","Initial Mathematical Derivation for: Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.
+
+Formula: sigma^2 = sum((x_i - mu)^2) / N
+
+Step 1: Compute the population mean mu for N = 8. => mu = (2 + 4 + 4 + 4 + 5 + 5 + 7 + 9) / 8 = 40 / 8 = 5
+Step 2: Compute deviations (x_i - mu) and their squares (x_i - mu)^2. => Squares: (2-5)^2=9, (4-5)^2=1, 1, 1, (5-5)^2=0, 0, (7-5)^2=4, (9-5)^2=16
+Step 3: Sum the squared deviations. => Sum of squared deviations = 9 + 1 + 1 + 1 + 0 + 0 + 4 + 16 = 32
+Step 4: Divide by population size N = 8. => sigma^2 = 32 / 8 = 4
+Derived Answer: 4
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 4 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 4",4,1,1,100.0,5,2026-10-14T21:31:26.606634,success,4,0,0,Probability and Statistics,Hard,"Calculate the population variance (sigma^2) of the following population dataset: 2, 4, 4, 4, 5, 5, 7, 9.",4,,,
+res-507beac5d764,exp-baseline-1791993686,PROB-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?. Give your answer.,"To solve this: The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?
+Final Answer: 0.65",0,1,0,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?,0.65,,,
+res-b7a66fae76c8,exp-baseline-1791993686,PROB-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?","Problem: The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?
+
+Relevant Formula/Theorem: P(A') = 1 - P(A)
+
+Step-by-step Solution:
+Step 1: State the rule of complementary events.
+Calculation / Result: P(Not Rain) = 1 - P(Rain)
+Applied Rule: Complement rule
+
+Step 2: Substitute P(Rain) = 0.35 and subtract from 1.
+Calculation / Result: 1 - 0.35 = 0.65
+Applied Rule: Decimal subtraction
+
+Conclusion:
+Final Answer: 0.65",0,1,0,100.0,11,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Easy,The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?,0.65,,,
+res-ce99dc2664da,exp-baseline-1791993686,PROB-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?","Initial Mathematical Derivation for: The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?
+
+Formula: P(A') = 1 - P(A)
+
+Step 1: State the rule of complementary events. => P(Not Rain) = 1 - P(Rain)
+Step 2: Substitute P(Rain) = 0.35 and subtract from 1. => 1 - 0.35 = 0.65
+Derived Answer: 0.65
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 0.65 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 0.65",0,1,0,100.0,7,2026-10-14T21:31:26.606634,success,0,0,0,Probability and Statistics,Easy,The meteorological probability of rain tomorrow in a certain city is 0.35. What is the probability that it will NOT rain tomorrow?,0.65,,,
+res-a210c7cf4123,exp-baseline-1791993686,PROB-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,"Solve this mathematics problem: A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.. Give your answer.","The test accuracy is 95%, so the probability is approximately 0.95.
+Final Answer: 0.95",0,1,0,0.0,7,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.",19/118,,,
+res-d35a4f79e1dd,exp-baseline-1791993686,PROB-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.","Problem: A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.
+
+Relevant Formula/Theorem: P(D|+) = (P(+|D) * P(D)) / (P(+|D)*P(D) + P(+|D')*P(D'))
+
+Step-by-step Solution:
+Step 1: Calculate numerator: P(+ and D) = P(+|D) * P(D) = 0.95 * 0.01.
+Calculation / Result: Numerator = 0.0095
+Applied Rule: Joint probability
+
+Step 2: Calculate denominator: total probability of positive test P(+) = P(+|D)*P(D) + P(+|D')*P(D'). Here P(D') = 1 - 0.01 = 0.99.
+Calculation / Result: 0.0095 + (0.05 * 0.99) = 0.0095 + 0.0495 = 0.0590
+Applied Rule: Law of total probability
+
+Step 3: Compute quotient: 0.0095 / 0.0590 = 95 / 590.
+Calculation / Result: Divide numerator and denominator by 5: 95/5 = 19, 590/5 = 118 => 19/118
+Applied Rule: Fraction simplification
+
+Conclusion:
+Final Answer: 19/118",19/118,1,1,100.0,8,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Hard,"A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.",19/118,,,
+res-cfc60d1b7394,exp-baseline-1791993686,PROB-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.","Initial Mathematical Derivation for: A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.
+
+Formula: P(D|+) = (P(+|D) * P(D)) / (P(+|D)*P(D) + P(+|D')*P(D'))
+
+Initial calculation: Test sensitivity is 0.95.
+Initial Answer: 0.95
+
+--- VERIFICATION ---
+Independent Check using Bayes' Theorem:
+P(D|+) = P(+|D)P(D) / [P(+|D)P(D) + P(+|D')P(D')]
+Numerator: 0.95 * 0.01 = 0.0095
+Denominator: 0.0095 + (0.05 * 0.99) = 0.0590
+Quotient: 0.0095 / 0.0590 = 19/118 (approx 16.1%).
+Initial answer ignored false positives! Correction applied.
+Verified Final Answer: 19/118",19/118,1,1,50.0,5,2026-10-14T21:31:26.606634,success,0,1,0,Probability and Statistics,Hard,"A rare disease affects 1% of a population (P(D) = 0.01). A diagnostic test has a true positive rate (sensitivity) of 95% (P(+|D) = 0.95) and a false positive rate of 5% (P(+|D') = 0.05). If an individual randomly selected from the population tests positive, find the exact posterior probability P(D|+) as a simplified fraction.",19/118,,,
+res-010786ad70d3,exp-baseline-1791993686,PROB-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?. Give your answer.,"To solve this: A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?
+Final Answer: 1/4",1/4,1,1,0.0,8,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?,1/4,,,
+res-3f113d3dd3fa,exp-baseline-1791993686,PROB-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?","Problem: A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?
+
+Relevant Formula/Theorem: P(X = k) = C(n, k) * p^k * (1 - p)^(n - k)
+
+Step-by-step Solution:
+Step 1: Identify binomial parameters: n = 4 trials, k = 3 successes, p = 1/2.
+Calculation / Result: n = 4, k = 3, p = 0.5, q = 0.5
+Applied Rule: Binomial distribution model
+
+Step 2: Compute the binomial coefficient C(4, 3).
+Calculation / Result: C(4, 3) = 4! / (3! * 1!) = 4
+Applied Rule: Combinations formula
+
+Step 3: Multiply by probability terms: (1/2)^3 * (1/2)^1.
+Calculation / Result: 4 * (1/8) * (1/2) = 4 * 1/16 = 4/16 = 1/4 = 0.25
+Applied Rule: Binomial formula
+
+Conclusion:
+Final Answer: 1/4",1/4,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Probability and Statistics,Medium,A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?,1/4,,,
+res-b4bd3769152f,exp-baseline-1791993686,PROB-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?","Initial Mathematical Derivation for: A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?
+
+Formula: P(X = k) = C(n, k) * p^k * (1 - p)^(n - k)
+
+Step 1: Identify binomial parameters: n = 4 trials, k = 3 successes, p = 1/2. => n = 4, k = 3, p = 0.5, q = 0.5
+Step 2: Compute the binomial coefficient C(4, 3). => C(4, 3) = 4! / (3! * 1!) = 4
+Step 3: Multiply by probability terms: (1/2)^3 * (1/2)^1. => 4 * (1/8) * (1/2) = 4 * 1/16 = 4/16 = 1/4 = 0.25
+Derived Answer: 1/4
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1/4 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1/4",1/4,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1/4,0,0,Probability and Statistics,Medium,A fair coin is flipped 4 times independently. What is the probability of obtaining exactly 3 heads?,1/4,,,
+res-281cfdf8aae2,exp-baseline-1791993686,CALC-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.. Give your answer.,"To solve this: Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.
+Final Answer: 15x^2 - 8x + 7",15x**2 - 8x + 7,1,1,75.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.,15x^2 - 8x + 7,,,
+res-fe2f8ad90787,exp-baseline-1791993686,CALC-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.","Problem: Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.
+
+Relevant Formula/Theorem: d/dx(x^n) = n * x^(n - 1)
+
+Step-by-step Solution:
+Step 1: Differentiate 5x^3 using power rule: 5 * 3 * x^(3 - 1).
+Calculation / Result: 15x^2
+Applied Rule: Constant multiple and power rule
+
+Step 2: Differentiate -4x^2 using power rule: -4 * 2 * x^(2 - 1).
+Calculation / Result: -8x
+Applied Rule: Power rule
+
+Step 3: Differentiate 7x (gives 7) and constant -9 (gives 0).
+Calculation / Result: +7 - 0 = +7
+Applied Rule: Derivative of linear and constant terms
+
+Step 4: Combine the terms.
+Calculation / Result: 15x^2 - 8x + 7
+Applied Rule: Sum rule of differentiation
+
+Conclusion:
+Final Answer: 15x^2 - 8x + 7",15x**2 - 8x + 7,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.,15x^2 - 8x + 7,,,
+res-e51091bac45b,exp-baseline-1791993686,CALC-01,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.","Initial Mathematical Derivation for: Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.
+
+Formula: d/dx(x^n) = n * x^(n - 1)
+
+Step 1: Differentiate 5x^3 using power rule: 5 * 3 * x^(3 - 1). => 15x^2
+Step 2: Differentiate -4x^2 using power rule: -4 * 2 * x^(2 - 1). => -8x
+Step 3: Differentiate 7x (gives 7) and constant -9 (gives 0). => +7 - 0 = +7
+Step 4: Combine the terms. => 15x^2 - 8x + 7
+Derived Answer: 15x^2 - 8x + 7
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 15x^2 - 8x + 7 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 15x^2 - 8x + 7",15x**2 - 8x + 7,1,1,100.0,5,2026-10-14T21:31:26.606634,success,15x**2 - 8x + 7,0,0,Calculus,Easy,Find the derivative of the polynomial function: f(x) = 5x^3 - 4x^2 + 7x - 9.,15x^2 - 8x + 7,,,
+res-75b8586765f6,exp-baseline-1791993686,CALC-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].. Give your answer.,"To solve this: Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].
+Final Answer: 6",6,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].,6,,,
+res-22da47cf2f90,exp-baseline-1791993686,CALC-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].","Problem: Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].
+
+Relevant Formula/Theorem: a^2 - b^2 = (a - b)(a + b)
+
+Step-by-step Solution:
+Step 1: Notice direct substitution x = 3 yields indeterminate form 0/0.
+Calculation / Result: (3^2 - 9)/(3 - 3) = 0/0
+Applied Rule: Direct substitution test
+
+Step 2: Factor the numerator as a difference of squares: x^2 - 9 = (x - 3)(x + 3).
+Calculation / Result: ((x - 3)(x + 3)) / (x - 3)
+Applied Rule: Difference of squares
+
+Step 3: Cancel common factor (x - 3) for x != 3.
+Calculation / Result: x + 3
+Applied Rule: Algebraic cancellation
+
+Step 4: Substitute x = 3 into simplified expression.
+Calculation / Result: 3 + 3 = 6
+Applied Rule: Continuous function limit substitution
+
+Conclusion:
+Final Answer: 6",6,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].,6,,,
+res-a1abb60821cd,exp-baseline-1791993686,CALC-02,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].","Initial Mathematical Derivation for: Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].
+
+Formula: a^2 - b^2 = (a - b)(a + b)
+
+Step 1: Notice direct substitution x = 3 yields indeterminate form 0/0. => (3^2 - 9)/(3 - 3) = 0/0
+Step 2: Factor the numerator as a difference of squares: x^2 - 9 = (x - 3)(x + 3). => ((x - 3)(x + 3)) / (x - 3)
+Step 3: Cancel common factor (x - 3) for x != 3. => x + 3
+Step 4: Substitute x = 3 into simplified expression. => 3 + 3 = 6
+Derived Answer: 6
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 6 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 6",6,1,1,100.0,5,2026-10-14T21:31:26.606634,success,6,0,0,Calculus,Easy,Evaluate the limit: lim (x -> 3) [ (x^2 - 9) / (x - 3) ].,6,,,
+res-627debab2381,exp-baseline-1791993686,CALC-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find the first derivative of f(x) = x^2 * e^x.. Give your answer.,"To solve this: Find the first derivative of f(x) = x^2 * e^x.
+Final Answer: (x^2 + 2x)*e^x",(x**2 + 2x)*e**x,1,1,33.33,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Find the first derivative of f(x) = x^2 * e^x.,(x^2 + 2x)*e^x,,,
+res-d4c240c1f419,exp-baseline-1791993686,CALC-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the first derivative of f(x) = x^2 * e^x.","Problem: Find the first derivative of f(x) = x^2 * e^x.
+
+Relevant Formula/Theorem: d/dx[u*v] = u'*v + u*v'
+
+Step-by-step Solution:
+Step 1: Set u(x) = x^2 and v(x) = e^x.
+Calculation / Result: u'(x) = 2x and v'(x) = e^x
+Applied Rule: Derivatives of power and exponential functions
+
+Step 2: Apply product rule formula: u'v + uv'.
+Calculation / Result: (2x)(e^x) + (x^2)(e^x)
+Applied Rule: Product rule
+
+Step 3: Factor out common factor e^x.
+Calculation / Result: (x^2 + 2x)e^x or x(x + 2)e^x
+Applied Rule: Algebraic factoring
+
+Conclusion:
+Final Answer: (x^2 + 2x)*e^x",(x**2 + 2x)*e**x,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Find the first derivative of f(x) = x^2 * e^x.,(x^2 + 2x)*e^x,,,
+res-fb12af81296d,exp-baseline-1791993686,CALC-03,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the first derivative of f(x) = x^2 * e^x.","Initial Mathematical Derivation for: Find the first derivative of f(x) = x^2 * e^x.
+
+Formula: d/dx[u*v] = u'*v + u*v'
+
+Step 1: Set u(x) = x^2 and v(x) = e^x. => u'(x) = 2x and v'(x) = e^x
+Step 2: Apply product rule formula: u'v + uv'. => (2x)(e^x) + (x^2)(e^x)
+Step 3: Factor out common factor e^x. => (x^2 + 2x)e^x or x(x + 2)e^x
+Derived Answer: (x^2 + 2x)*e^x
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result (x^2 + 2x)*e^x by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: (x^2 + 2x)*e^x",(x**2 + 2x)*e**x,1,1,100.0,5,2026-10-14T21:31:26.606634,success,(x**2 + 2x)*e**x,0,0,Calculus,Medium,Find the first derivative of f(x) = x^2 * e^x.,(x^2 + 2x)*e^x,,,
+res-ce35c72d15cf,exp-baseline-1791993686,CALC-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find the derivative of f(x) = sin(3x^2 + 1).. Give your answer.,"Differentiating sin(3x^2 + 1) with respect to x gives cos(3x^2 + 1).
+Final Answer: cos(3x^2 + 1)",cos(3x**2 + 1),1,-1,0.0,5,2026-10-14T21:31:26.606634,success,,0,1,Calculus,Medium,Find the derivative of f(x) = sin(3x^2 + 1).,6x*cos(3x^2 + 1),,,
+res-872f36f03bd9,exp-baseline-1791993686,CALC-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the derivative of f(x) = sin(3x^2 + 1).","Problem: Find the derivative of f(x) = sin(3x^2 + 1).
+
+Relevant Formula/Theorem: d/dx[f(g(x))] = f'(g(x)) * g'(x)
+
+Step-by-step Solution:
+Step 1: Identify outer function f(u) = sin(u) and inner function u = 3x^2 + 1.
+Calculation / Result: f'(u) = cos(u)
+Applied Rule: Trigonometric derivative rule
+
+Step 2: Differentiate inner function with respect to x.
+Calculation / Result: u' = d/dx(3x^2 + 1) = 6x
+Applied Rule: Power rule
+
+Step 3: Multiply outer derivative by inner derivative.
+Calculation / Result: cos(3x^2 + 1) * 6x = 6x*cos(3x^2 + 1)
+Applied Rule: Chain rule
+
+Conclusion:
+Final Answer: 6x*cos(3x^2 + 1)",6x*cos(3x**2 + 1),1,1,100.0,6,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Find the derivative of f(x) = sin(3x^2 + 1).,6x*cos(3x^2 + 1),,,
+res-7e208744a03c,exp-baseline-1791993686,CALC-04,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the derivative of f(x) = sin(3x^2 + 1).","Initial Mathematical Derivation for: Find the derivative of f(x) = sin(3x^2 + 1).
+
+Formula: d/dx[f(g(x))] = f'(g(x)) * g'(x)
+
+Step 1: Identify outer function f(u) = sin(u) and inner function u = 3x^2 + 1. => f'(u) = cos(u)
+Step 2: Differentiate inner function with respect to x. => u' = d/dx(3x^2 + 1) = 6x
+Step 3: Multiply outer derivative by inner derivative. => cos(3x^2 + 1) * 6x = 6x*cos(3x^2 + 1)
+Derived Answer: 6x*cos(3x^2 + 1)
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 6x*cos(3x^2 + 1) by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 6x*cos(3x^2 + 1)",6x*cos(3x**2 + 1),1,1,100.0,5,2026-10-14T21:31:26.606634,success,6x*cos(3x**2 + 1),0,0,Calculus,Medium,Find the derivative of f(x) = sin(3x^2 + 1).,6x*cos(3x^2 + 1),,,
+res-859e873ac6a0,exp-baseline-1791993686,CALC-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.. Give your answer.,"To solve this: Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.
+Final Answer: 2x^3 - 2x^2 + 3x + C",2x**3 - 2x**2 + 3x + C,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.,2x^3 - 2x^2 + 3x + C,,,
+res-007f1de7bc30,exp-baseline-1791993686,CALC-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.","Problem: Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.
+
+Relevant Formula/Theorem: integral(x^n dx) = x^(n+1)/(n+1) + C for n != -1
+
+Step-by-step Solution:
+Step 1: Integrate term 6x^2: 6 * (x^3 / 3).
+Calculation / Result: 2x^3
+Applied Rule: Power rule of integration
+
+Step 2: Integrate term -4x: -4 * (x^2 / 2).
+Calculation / Result: -2x^2
+Applied Rule: Power rule of integration
+
+Step 3: Integrate constant term 3: 3x.
+Calculation / Result: 3x
+Applied Rule: Integration of constant
+
+Step 4: Combine terms and append constant of integration C.
+Calculation / Result: 2x^3 - 2x^2 + 3x + C
+Applied Rule: Indefinite integral form
+
+Conclusion:
+Final Answer: 2x^3 - 2x^2 + 3x + C",2x**3 - 2x**2 + 3x + C,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Easy,Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.,2x^3 - 2x^2 + 3x + C,,,
+res-a66e34074ce6,exp-baseline-1791993686,CALC-05,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.","Initial Mathematical Derivation for: Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.
+
+Formula: integral(x^n dx) = x^(n+1)/(n+1) + C for n != -1
+
+Step 1: Integrate term 6x^2: 6 * (x^3 / 3). => 2x^3
+Step 2: Integrate term -4x: -4 * (x^2 / 2). => -2x^2
+Step 3: Integrate constant term 3: 3x. => 3x
+Step 4: Combine terms and append constant of integration C. => 2x^3 - 2x^2 + 3x + C
+Derived Answer: 2x^3 - 2x^2 + 3x + C
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 2x^3 - 2x^2 + 3x + C by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 2x^3 - 2x^2 + 3x + C",2x**3 - 2x**2 + 3x + C,1,1,100.0,5,2026-10-14T21:31:26.606634,success,2x**3 - 2x**2 + 3x + C,0,0,Calculus,Easy,Evaluate the indefinite integral: integral (6x^2 - 4x + 3) dx.,2x^3 - 2x^2 + 3x + C,,,
+res-9f8603e19781,exp-baseline-1791993686,CALC-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.. Give your answer.,"To solve this: Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.
+Final Answer: 12",12,1,1,0.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.,12,,,
+res-8147e574aeeb,exp-baseline-1791993686,CALC-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.","Problem: Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.
+
+Relevant Formula/Theorem: integral_a^b f(x) dx = F(b) - F(a) (Fundamental Theorem of Calculus)
+
+Step-by-step Solution:
+Step 1: Find an antiderivative F(x) of 3x^2 + 2x.
+Calculation / Result: F(x) = 3*(x^3/3) + 2*(x^2/2) = x^3 + x^2
+Applied Rule: Antiderivative power rule
+
+Step 2: Evaluate F(x) at upper limit x = 2.
+Calculation / Result: F(2) = 2^3 + 2^2 = 8 + 4 = 12
+Applied Rule: Evaluation at upper bound
+
+Step 3: Evaluate F(x) at lower limit x = 0.
+Calculation / Result: F(0) = 0^3 + 0^2 = 0
+Applied Rule: Evaluation at lower bound
+
+Step 4: Compute F(2) - F(0).
+Calculation / Result: 12 - 0 = 12
+Applied Rule: Fundamental Theorem of Calculus Part 2
+
+Conclusion:
+Final Answer: 12",12,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.,12,,,
+res-fed66a2813c2,exp-baseline-1791993686,CALC-06,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.","Initial Mathematical Derivation for: Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.
+
+Formula: integral_a^b f(x) dx = F(b) - F(a) (Fundamental Theorem of Calculus)
+
+Step 1: Find an antiderivative F(x) of 3x^2 + 2x. => F(x) = 3*(x^3/3) + 2*(x^2/2) = x^3 + x^2
+Step 2: Evaluate F(x) at upper limit x = 2. => F(2) = 2^3 + 2^2 = 8 + 4 = 12
+Step 3: Evaluate F(x) at lower limit x = 0. => F(0) = 0^3 + 0^2 = 0
+Step 4: Compute F(2) - F(0). => 12 - 0 = 12
+Derived Answer: 12
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 12 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 12",12,1,1,100.0,5,2026-10-14T21:31:26.606634,success,12,0,0,Calculus,Medium,Evaluate the definite integral from 0 to 2: integral_{0}^{2} (3x^2 + 2x) dx.,12,,,
+res-ea5083122aba,exp-baseline-1791993686,CALC-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.. Give your answer.,"To solve this: Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.
+Final Answer: (x^2 + 5)^4 / 4 + C",(x**2 + 5)**4 / 4 + C,1,1,25.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.,(x^2 + 5)^4 / 4 + C,,,
+res-0fda0244f470,exp-baseline-1791993686,CALC-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.","Problem: Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.
+
+Relevant Formula/Theorem: integral f(g(x))*g'(x) dx = integral f(u) du
+
+Step-by-step Solution:
+Step 1: Substitute u = x^2 + 5.
+Calculation / Result: du = 2x dx
+Applied Rule: Differential substitution
+
+Step 2: Rewrite integral completely in terms of u.
+Calculation / Result: integral u^3 du
+Applied Rule: Variable substitution
+
+Step 3: Integrate u^3 with respect to u.
+Calculation / Result: u^4 / 4 + C
+Applied Rule: Power rule of integration
+
+Step 4: Substitute back u = x^2 + 5.
+Calculation / Result: (x^2 + 5)^4 / 4 + C
+Applied Rule: Back substitution
+
+Conclusion:
+Final Answer: (x^2 + 5)^4 / 4 + C",(x**2 + 5)**4 / 4 + C,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.,(x^2 + 5)^4 / 4 + C,,,
+res-e9e5090479d6,exp-baseline-1791993686,CALC-07,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.","Initial Mathematical Derivation for: Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.
+
+Formula: integral f(g(x))*g'(x) dx = integral f(u) du
+
+Step 1: Substitute u = x^2 + 5. => du = 2x dx
+Step 2: Rewrite integral completely in terms of u. => integral u^3 du
+Step 3: Integrate u^3 with respect to u. => u^4 / 4 + C
+Step 4: Substitute back u = x^2 + 5. => (x^2 + 5)^4 / 4 + C
+Derived Answer: (x^2 + 5)^4 / 4 + C
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result (x^2 + 5)^4 / 4 + C by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: (x^2 + 5)^4 / 4 + C",(x**2 + 5)**4 / 4 + C,1,1,100.0,5,2026-10-14T21:31:26.606634,success,(x**2 + 5)**4 / 4 + C,0,0,Calculus,Hard,Evaluate the indefinite integral: integral 2x * (x^2 + 5)^3 dx.,(x^2 + 5)^4 / 4 + C,,,
+res-2242c829cead,exp-baseline-1791993686,CALC-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.. Give your answer.,"To solve this: Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.
+Final Answer: 2",2,1,1,50.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.,2,,,
+res-d920fc7b9f06,exp-baseline-1791993686,CALC-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.","Problem: Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.
+
+Relevant Formula/Theorem: f'(x) = 0 for critical points
+
+Step-by-step Solution:
+Step 1: Find the derivative f'(x) using the power rule.
+Calculation / Result: f'(x) = 3x^2 - 12
+Applied Rule: Derivative of polynomial
+
+Step 2: Set f'(x) = 0 to find critical numbers.
+Calculation / Result: 3x^2 - 12 = 0 => 3(x^2 - 4) = 0
+Applied Rule: Stationary point condition
+
+Step 3: Solve for x.
+Calculation / Result: x^2 = 4 => x = 2 or x = -2
+Applied Rule: Square root property
+
+Step 4: Select the positive critical point as required by the problem condition (x > 0).
+Calculation / Result: x = 2
+Applied Rule: Domain constraint evaluation
+
+Conclusion:
+Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.,2,,,
+res-31be08fbc26e,exp-baseline-1791993686,CALC-08,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.","Initial Mathematical Derivation for: Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.
+
+Formula: f'(x) = 0 for critical points
+
+Step 1: Find the derivative f'(x) using the power rule. => f'(x) = 3x^2 - 12
+Step 2: Set f'(x) = 0 to find critical numbers. => 3x^2 - 12 = 0 => 3(x^2 - 4) = 0
+Step 3: Solve for x. => x^2 = 4 => x = 2 or x = -2
+Step 4: Select the positive critical point as required by the problem condition (x > 0). => x = 2
+Derived Answer: 2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,2,0,0,Calculus,Hard,Find the positive critical point x > 0 of the function: f(x) = x^3 - 12x + 5.,2,,,
+res-0c827374d054,exp-baseline-1791993686,CALC-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Find the derivative of the rational function: f(x) = x / (x + 1).. Give your answer.,"To solve this: Find the derivative of the rational function: f(x) = x / (x + 1).
+Final Answer: 1/(x + 1)^2",1/(x + 1)**2,1,1,33.33,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Find the derivative of the rational function: f(x) = x / (x + 1).,1/(x + 1)^2,,,
+res-02c399e5d9dc,exp-baseline-1791993686,CALC-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Find the derivative of the rational function: f(x) = x / (x + 1).","Problem: Find the derivative of the rational function: f(x) = x / (x + 1).
+
+Relevant Formula/Theorem: d/dx[u/v] = (u'v - uv') / v^2
+
+Step-by-step Solution:
+Step 1: Identify u = x and v = x + 1, so u' = 1 and v' = 1.
+Calculation / Result: u' = 1, v' = 1
+Applied Rule: Derivatives of linear terms
+
+Step 2: Apply quotient rule: (u'v - uv') / v^2.
+Calculation / Result: (1*(x + 1) - x*1) / (x + 1)^2
+Applied Rule: Quotient rule
+
+Step 3: Simplify the numerator: (x + 1 - x) = 1.
+Calculation / Result: 1 / (x + 1)^2
+Applied Rule: Algebraic simplification
+
+Conclusion:
+Final Answer: 1/(x + 1)^2",1/(x + 1)**2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Medium,Find the derivative of the rational function: f(x) = x / (x + 1).,1/(x + 1)^2,,,
+res-49cf62a99f5d,exp-baseline-1791993686,CALC-09,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Find the derivative of the rational function: f(x) = x / (x + 1).","Initial Mathematical Derivation for: Find the derivative of the rational function: f(x) = x / (x + 1).
+
+Formula: d/dx[u/v] = (u'v - uv') / v^2
+
+Step 1: Identify u = x and v = x + 1, so u' = 1 and v' = 1. => u' = 1, v' = 1
+Step 2: Apply quotient rule: (u'v - uv') / v^2. => (1*(x + 1) - x*1) / (x + 1)^2
+Step 3: Simplify the numerator: (x + 1 - x) = 1. => 1 / (x + 1)^2
+Derived Answer: 1/(x + 1)^2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 1/(x + 1)^2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 1/(x + 1)^2",1/(x + 1)**2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,1/(x + 1)**2,0,0,Calculus,Medium,Find the derivative of the rational function: f(x) = x / (x + 1).,1/(x + 1)^2,,,
+res-1cf64c18bdce,exp-baseline-1791993686,CALC-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,plain,Solve this mathematics problem: Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].. Give your answer.,"To solve this: Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].
+Final Answer: 2",2,1,1,16.67,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].,2,,,
+res-e2ec39b96f24,exp-baseline-1791993686,CALC-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,step_by_step,"Solve this mathematics problem step by step. State the relevant formula, explain each calculation, show intermediate steps, and provide the final answer. Check that the reasoning follows mathematically.
+
+Problem:
+Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].","Problem: Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].
+
+Relevant Formula/Theorem: lim [f(x)/g(x)] = lim [f'(x)/g'(x)] for 0/0 (L'Hopital's Rule)
+
+Step-by-step Solution:
+Step 1: Check indeterminate form: as x -> 0, e^0 - 1 = 0 and denominator = 0 (form 0/0).
+Calculation / Result: Indeterminate form 0/0 verified
+Applied Rule: Direct substitution check
+
+Step 2: Apply L'Hopital's Rule: differentiate numerator and denominator with respect to x.
+Calculation / Result: d/dx(e^(2x) - 1) = 2*e^(2x) and d/dx(x) = 1
+Applied Rule: L'Hopital's Rule & chain rule
+
+Step 3: Evaluate limit of quotient of derivatives as x -> 0.
+Calculation / Result: lim (x -> 0) [ 2*e^(2x) / 1 ] = 2*e^0 / 1 = 2*1 = 2
+Applied Rule: Limit evaluation
+
+Conclusion:
+Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,,0,0,Calculus,Hard,Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].,2,,,
+res-301e01aa727d,exp-baseline-1791993686,CALC-10,Local Reference Solver (Demo Baseline),demo-baseline-v1.0,self_verification,"Solve this mathematics problem step by step. State the relevant formula, show the calculations, provide the final answer, independently verify the result using substitution, an alternative method, or another appropriate mathematical check, and correct any errors you identify. Explain the verification.
+
+Problem:
+Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].","Initial Mathematical Derivation for: Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].
+
+Formula: lim [f(x)/g(x)] = lim [f'(x)/g'(x)] for 0/0 (L'Hopital's Rule)
+
+Step 1: Check indeterminate form: as x -> 0, e^0 - 1 = 0 and denominator = 0 (form 0/0). => Indeterminate form 0/0 verified
+Step 2: Apply L'Hopital's Rule: differentiate numerator and denominator with respect to x. => d/dx(e^(2x) - 1) = 2*e^(2x) and d/dx(x) = 1
+Step 3: Evaluate limit of quotient of derivatives as x -> 0. => lim (x -> 0) [ 2*e^(2x) / 1 ] = 2*e^0 / 1 = 2*1 = 2
+Derived Answer: 2
+
+--- VERIFICATION ---
+Independent Verification:
+Testing derived result 2 by direct substitution / alternative algebraic check:
+All constraints and intermediate equalities hold true without contradiction.
+Verified Final Answer: 2",2,1,1,100.0,5,2026-10-14T21:31:26.606634,success,2,0,0,Calculus,Hard,Evaluate the limit: lim (x -> 0) [ (e^(2x) - 1) / x ].,2,,,

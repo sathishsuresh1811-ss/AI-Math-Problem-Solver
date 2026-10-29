@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Empirical Analytics & Visualizations{% endblock %}
+
+{% block content %}
+<!-- Top Metrics Summary -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Total Sample Size</div>
+    <div class="stat-value">{{ overall.total_runs }}</div>
+    <div class="stat-subtext">N = {{ overall.total_runs }} evaluated trials</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Final-Answer Accuracy</div>
+    <div class="stat-value" style="color: #38bdf8;">{{ overall.final_accuracy }}%</div>
+    <div class="stat-subtext">Overall correctness rate</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Mean Step Accuracy</div>
+    <div class="stat-value" style="color: #34d399;">{{ overall.mean_step_accuracy }}%</div>
+    <div class="stat-subtext">Deductive chain score</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Mean Latency</div>
+    <div class="stat-value" style="color: #a5b4fc;">{{ overall.mean_latency_ms }} ms</div>
+    <div class="stat-subtext">Average response time</div>
+  </div>
+</div>
+
+<!-- Primary Visualizations Grid -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px;">
+  <!-- Provider Performance Chart -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Performance by AI Provider / Backend</div>
+        <div class="card-desc">Final-answer accuracy vs intermediate step accuracy</div>
+      </div>
+    </div>
+    <div style="height: 280px; position: relative;">
+      <canvas id="providerCompChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Topic Performance Chart -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Performance by Mathematics Topic</div>
+        <div class="card-desc">Algebra vs Probability/Statistics vs Calculus</div>
+      </div>
+    </div>
+    <div style="height: 280px; position: relative;">
+      <canvas id="topicPerformanceChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px;">
+  <!-- Error Category Distribution Chart -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Error Taxonomy Distribution</div>
+        <div class="card-desc">Frequency of detected mathematical error categories</div>
+      </div>
+      <a href="{{ url_for('error_analysis_view') }}" class="btn btn-outline btn-sm">Deep Dive →</a>
+    </div>
+    <div style="height: 280px; position: relative;">
+      <canvas id="errorCategoryChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Self-Verification Before vs After -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Self-Verification Impact (Pre vs Post)</div>
+        <div class="card-desc">Paired accuracy change on the same problems</div>
+      </div>
+      <a href="{{ url_for('verification_report_view') }}" class="btn btn-outline btn-sm">Full Report →</a>
+    </div>
+    <div style="height: 280px; position: relative;">
+      <canvas id="verifBeforeAfterChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Problem-Level Heatmap Matrix -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Problem-Level Results Heatmap</div>
+      <div class="card-desc">Matrix of all 30 problems across the 3 prompt conditions</div>
+    </div>
+    <div style="display: flex; gap: 12px; font-size: 11px;">
+      <span style="display: flex; align-items: center; gap: 4px;">
+        <span style="width: 10px; height: 10px; background: rgba(16, 185, 129, 0.6); border-radius: 2px;"></span> Correct
+      </span>
+      <span style="display: flex; align-items: center; gap: 4px;">
+        <span style="width: 10px; height: 10px; background: rgba(239, 68, 68, 0.6); border-radius: 2px;"></span> Incorrect
+      </span>
+      <span style="display: flex; align-items: center; gap: 4px;">
+        <span style="width: 10px; height: 10px; background: rgba(245, 158, 11, 0.6); border-radius: 2px;"></span> Review
+      </span>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="custom-table" style="font-size: 12px;">
+      <thead>
+        <tr>
+          <th style="width: 110px;">Problem ID</th>
+          <th>Plain Baseline</th>
+          <th>Step-by-Step</th>
+          <th>Self-Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pid in heatmap.problems %}
+        <tr>
+          <td>
+            <a href="{{ url_for('problem_detail', prob_id=pid) }}" style="color: #fff; font-weight: 700; text-decoration: none;">
+              {{ pid }}
+            </a>
+          </td>
+          {% for cond in heatmap.columns %}
+            {% set cell = heatmap.matrix[pid][cond] %}
+            <td>
+              {% if cell %}
+                <div class="heatmap-cell {% if cell.is_correct == 1 %}correct{% elif cell.is_correct == 0 %}incorrect{% else %}unscorable{% endif %}" onclick="openResultModal('{{ cell.result_id }}')">
+                  {% if cell.is_correct == 1 %}✓ Correct ({{ cell.step_accuracy }}%){% elif cell.is_correct == 0 %}✗ Incorrect ({{ cell.step_accuracy }}%){% else %}? Review{% endif %}
+                </div>
+              {% else %}
+                <div class="heatmap-cell empty">Not Run</div>
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch("/api/analytics-data")
+      .then(res => res.json())
+      .then(data => {
+        initAnalyticsCharts(data);
+      });
+  });
+</script>
+{% endblock %}

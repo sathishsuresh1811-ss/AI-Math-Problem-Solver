@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Experimental Research Dashboard{% endblock %}
+
+{% block content %}
+<!-- Top Metrics Grid -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Total Experimental Runs</div>
+    <div class="stat-value">{{ metrics.total_runs }}</div>
+    <div class="stat-subtext">
+      <span class="badge badge-live">{{ metrics.live_runs }} Live</span>
+      <span class="badge badge-demo">{{ metrics.demo_runs }} Baseline</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Final-Answer Accuracy</div>
+    <div class="stat-value" style="color: #38bdf8;">{{ metrics.final_accuracy }}%</div>
+    <div class="stat-subtext">{{ metrics.correct_count }} correct of {{ metrics.correct_count + metrics.incorrect_count }} scorable</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Mean Step Accuracy</div>
+    <div class="stat-value" style="color: #34d399;">{{ metrics.mean_step_accuracy }}%</div>
+    <div class="stat-subtext">Normalized intermediate step score</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-label">Verification Delta</div>
+    <div class="stat-value" style="color: {% if verif.percentage_point_change >= 0 %}#34d399{% else %}#f87171{% endif %};">
+      {% if verif.percentage_point_change >= 0 %}+{% endif %}{{ verif.percentage_point_change }} pp
+    </div>
+    <div class="stat-subtext">{{ verif.fixed_count }} errors fixed, {{ verif.introduced_count }} introduced</div>
+  </div>
+</div>
+
+<!-- Primary Charts Row -->
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 28px;">
+  <!-- Prompt Condition Comparison -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Prompt Conditioning Comparison</div>
+        <div class="card-desc">Comparing Plain baseline, Step-by-Step reasoning, and Self-Verification prompts</div>
+      </div>
+      <a href="{{ url_for('analytics_view') }}" class="btn btn-outline btn-sm">Full Analytics →</a>
+    </div>
+    <div style="height: 280px; position: relative;">
+      <canvas id="promptCompChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Verification Impact Summary -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Self-Verification Effect</div>
+        <div class="card-desc">Paired trial outcomes</div>
+      </div>
+      <a href="{{ url_for('verification_report_view') }}" class="btn btn-outline btn-sm">Details →</a>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+      <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 14px;">
+        <div style="font-size: 11px; font-weight: 600; color: #34d399; text-transform: uppercase;">Errors Fixed by Verification</div>
+        <div style="font-size: 24px; font-weight: 700; color: #fff;">{{ verif.fixed_count }} cases</div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Initial incorrect answer corrected via substitution / alternative check</div>
+      </div>
+
+      <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 14px;">
+        <div style="font-size: 11px; font-weight: 600; color: #f87171; text-transform: uppercase;">Errors Introduced by Verification</div>
+        <div style="font-size: 24px; font-weight: 700; color: #fff;">{{ verif.introduced_count }} cases</div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Initial correct answer corrupted by flawed verification check</div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px;">
+        <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Unchanged Accuracy</div>
+        <div style="font-size: 24px; font-weight: 700; color: #fff;">{{ verif.unchanged_count }} cases</div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Self-check confirmed the initial derivation state</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Multi-Provider Integration Status -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">AI Provider Backends & Integration Status</div>
+      <div class="card-desc">Transparent reporting of live APIs and local benchmark baselines</div>
+    </div>
+    <a href="{{ url_for('about_view') }}" class="btn btn-outline btn-sm">Integration Guide</a>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+    {% for p in providers %}
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+        <div style="font-weight: 600; font-size: 14px; color: #fff;">{{ p.name }}</div>
+        {% if p.is_demo %}
+          <span class="badge badge-demo">Baseline</span>
+        {% elif p.available %}
+          <span class="badge badge-success">Ready</span>
+        {% else %}
+          <span class="badge badge-warning">Needs Key</span>
+        {% endif %}
+      </div>
+      <div style="font-size: 12px; color: #38bdf8; font-family: 'Fira Code', monospace; margin-bottom: 6px;">{{ p.model }}</div>
+      <div style="font-size: 11px; color: var(--text-dim);">{{ p.notes }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Recent Experiment Runs Table -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Recent Experimental Executions</div>
+      <div class="card-desc">Click any run to inspect step-by-step reasoning and error classification</div>
+    </div>
+    <a href="{{ url_for('results_view') }}" class="btn btn-primary btn-sm">View All Results ({{ metrics.total_runs }})</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Topic</th>
+          <th>Provider</th>
+          <th>Condition</th>
+          <th>Parsed Answer</th>
+          <th>Correctness</th>
+          <th>Step Acc</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in recent_results %}
+        <tr>
+          <td><strong style="color: #fff;">{{ r.problem_id }}</strong></td>
+          <td>{{ r.topic }}</td>
+          <td>{{ r.provider }}</td>
+          <td>
+            <span class="badge badge-primary">{{ r.prompt_condition | replace('_', ' ') | title }}</span>
+          </td>
+          <td style="font-family: 'Fira Code', monospace; font-size: 12px;">{{ r.parsed_answer or '(None)' }}</td>
+          <td>
+            {% if r.is_correct == 1 %}
+              <span class="badge badge-success">✓ Correct</span>
+            {% elif r.is_correct == 0 %}
+              <span class="badge badge-danger">✗ Incorrect</span>
+            {% else %}
+              <span class="badge badge-warning">? Review</span>
+            {% endif %}
+          </td>
+          <td>{{ r.step_accuracy }}%</td>
+          <td>
+            <button class="btn btn-outline btn-sm" onclick="openResultModal('{{ r.id }}')">Inspect</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const promptData = {{ prompt_comp | tojson }};
+    initDashboardCharts(promptData);
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Problem Set (30) — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Independently Verified Mathematics Benchmark (30 Problems){% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 20px;">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Curated College-Level Mathematics Problem Set</div>
+      <div class="card-desc">30 original problems across Algebra (10), Probability & Statistics (10), and Calculus Basics (10)</div>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <a href="{{ url_for('export_problems_csv') }}" class="btn btn-outline btn-sm">Export CSV</a>
+      <a href="{{ url_for('experiment_view') }}" class="btn btn-primary btn-sm">⚡ Run Experiment on Problems</a>
+    </div>
+  </div>
+
+  <!-- Filter Buttons Bar -->
+  <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+    <span style="font-size:12px; font-weight:600; color:var(--text-muted); margin-right:4px;">Filter Topic:</span>
+    <a href="{{ url_for('problems_view') }}" class="btn {% if not current_topic %}btn-primary{% else %}btn-secondary{% endif %} btn-sm">All Topics (30)</a>
+    <a href="{{ url_for('problems_view', topic='Algebra', difficulty=current_difficulty) }}" class="btn {% if current_topic == 'Algebra' %}btn-primary{% else %}btn-secondary{% endif %} btn-sm">Algebra (10)</a>
+    <a href="{{ url_for('problems_view', topic='Probability and Statistics', difficulty=current_difficulty) }}" class="btn {% if current_topic == 'Probability and Statistics' %}btn-primary{% else %}btn-secondary{% endif %} btn-sm">Probability & Statistics (10)</a>
+    <a href="{{ url_for('problems_view', topic='Calculus', difficulty=current_difficulty) }}" class="btn {% if current_topic == 'Calculus' %}btn-primary{% else %}btn-secondary{% endif %} btn-sm">Calculus (10)</a>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px;">
+  {% for p in problems %}
+  <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span style="font-weight: 700; color: #fff; font-size: 15px;">{{ p.id }}</span>
+        <div style="display: flex; gap: 6px;">
+          <span class="badge badge-primary">{{ p.topic }}</span>
+          <span class="badge {% if p.difficulty == 'Easy' %}badge-success{% elif p.difficulty == 'Medium' %}badge-warning{% else %}badge-danger{% endif %}">
+            {{ p.difficulty }}
+          </span>
+        </div>
+      </div>
+
+      <div style="font-size: 13.5px; line-height: 1.5; color: var(--text-main); margin-bottom: 14px;">
+        {{ p.statement }}
+      </div>
+
+      <div class="formula-box">
+        <span style="color: var(--text-dim); font-size: 10px; display: block; margin-bottom: 2px;">RELEVANT FORMULA:</span>
+        {{ p.formula or 'Standard algebraic/calculus rules' }}
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 14px; margin-top: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span style="font-size: 10px; color: var(--text-muted); display: block;">REFERENCE ANSWER:</span>
+          <strong style="color: #34d399; font-size: 14px; font-family: 'Fira Code', monospace;">{{ p.final_answer }}</strong>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <a href="{{ url_for('problem_detail', prob_id=p.id) }}" class="btn btn-outline btn-sm">View Steps & History →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

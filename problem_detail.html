@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}{{ problem.id }} Detail — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Problem Specification: {{ problem.id }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 20px;">
+  <a href="{{ url_for('problems_view') }}" class="btn btn-outline btn-sm">← Back to Problem Catalog</a>
+</div>
+
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px;">
+  <!-- Problem Specs -->
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-header">
+      <div>
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <span class="badge badge-primary">{{ problem.topic }}</span>
+          <span class="badge {% if problem.difficulty == 'Easy' %}badge-success{% elif problem.difficulty == 'Medium' %}badge-warning{% else %}badge-danger{% endif %}">
+            {{ problem.difficulty }}
+          </span>
+          <span class="badge badge-demo">{{ problem.subtopic }}</span>
+        </div>
+        <div class="card-title">{{ problem.id }}: Problem Statement</div>
+      </div>
+      <span class="badge badge-success">✓ {{ problem.verification_status }}</span>
+    </div>
+
+    <div style="font-size: 16px; line-height: 1.6; color: #fff; margin-bottom: 20px; background: rgba(0,0,0,0.25); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+      {{ problem.statement }}
+    </div>
+
+    <div class="formula-box" style="margin-bottom: 20px;">
+      <span style="font-size: 11px; color: var(--text-dim); display: block;">THEORETICAL FORMULA / IDENTITY:</span>
+      {{ problem.formula }}
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 14px;">
+        <span style="font-size: 11px; color: #34d399; font-weight: 600;">CANONICAL REFERENCE ANSWER:</span>
+        <div style="font-size: 18px; font-weight: 700; color: #fff; margin-top: 4px; font-family: 'Fira Code', monospace;">
+          {{ problem.final_answer }}
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px;">
+        <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">ACCEPTABLE EQUIVALENTS:</span>
+        <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px; font-family: 'Fira Code', monospace;">
+          {{ problem.acceptable_equivalents | join(', ') }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common Mistakes & Quick Runner -->
+  <div style="display: flex; flex-direction: column; gap: 20px;">
+    <div class="card" style="margin-bottom: 0;">
+      <div class="card-header">
+        <div class="card-title">Documented Misconceptions</div>
+      </div>
+      <ul style="padding-left: 20px; font-size: 13px; line-height: 1.6; color: #fca5a5;">
+        {% for m in problem.common_mistakes %}
+        <li style="margin-bottom: 8px;">{{ m }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom: 0;">
+      <div class="card-header">
+        <div class="card-title">Test This Problem</div>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+        Dispatch a live evaluation across all 3 prompt conditions for this specific problem.
+      </p>
+      <a href="{{ url_for('experiment_view') }}" class="btn btn-primary" style="width: 100%;">
+        Open Experiment Runner
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Reference Steps Breakdown -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Required Reference Solution Steps ({{ problem.reference_steps | length }})</div>
+    <div class="card-desc">Rubric used to evaluate step-by-step reasoning fidelity</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    {% for s in problem.reference_steps %}
+    <div class="step-item step-correct" style="background: rgba(15, 23, 42, 0.5);">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <strong style="color: #fff; font-size: 14px;">Step {{ s.step_number }}: {{ s.description }}</strong>
+        <span class="badge badge-primary">{{ s.formula_used }}</span>
+      </div>
+      <div style="font-size: 13px; color: #38bdf8; font-family: 'Fira Code', monospace; margin-top: 6px;">
+        Intermediate Result: {{ s.intermediate_result }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Past Historical Runs for this Problem -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Recorded Experimental Trials for {{ problem.id }} ({{ runs | length }})</div>
+    <div class="card-desc">Comparative results across tested providers and prompt conditions</div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Condition</th>
+          <th>Parsed Answer</th>
+          <th>Result</th>
+          <th>Step Acc</th>
+          <th>Verification Effect</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in runs %}
+        <tr>
+          <td>{{ r.provider }}</td>
+          <td><span class="badge badge-primary">{{ r.prompt_condition | replace('_', ' ') | title }}</span></td>
+          <td style="font-family: 'Fira Code', monospace; font-size: 12px;">{{ r.parsed_answer or '(None)' }}</td>
+          <td>
+            {% if r.is_correct == 1 %}
+              <span class="badge badge-success">✓ Correct</span>
+            {% elif r.is_correct == 0 %}
+              <span class="badge badge-danger">✗ Incorrect</span>
+            {% else %}
+              <span class="badge badge-warning">? Review</span>
+            {% endif %}
+          </td>
+          <td>{{ r.step_accuracy }}%</td>
+          <td>
+            {% if r.prompt_condition == 'self_verification' %}
+              {% if r.verification_fixed_error == 1 %}
+                <span class="badge badge-success">Fixed Error</span>
+              {% elif r.verification_fixed_error == -1 %}
+                <span class="badge badge-danger">Introduced Error</span>
+              {% else %}
+                <span class="badge badge-demo">Unchanged</span>
+              {% endif %}
+            {% else %}
+              <span style="color: var(--text-dim);">-</span>
+            {% endif %}
+          </td>
+          <td>
+            <button class="btn btn-outline btn-sm" onclick="openResultModal('{{ r.id }}')">Inspect</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}AI Math Problem Explainer and Error Checker{% endblock %} — Capstone</title>
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for LaTeX Math Formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">∑</div>
+        <div>
+          <div class="brand-title">AI Math Checker</div>
+          <div class="brand-badge">Capstone Research</div>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-heading">Core Dashboard</div>
+        <a href="{{ url_for('index') }}" class="nav-link {% if active_page == 'dashboard' %}active{% endif %}">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="{{ url_for('problems_view') }}" class="nav-link {% if active_page == 'problems' %}active{% endif %}">
+          <span class="nav-icon">📚</span> Problem Set (30)
+        </a>
+        <a href="{{ url_for('experiment_view') }}" class="nav-link {% if active_page == 'experiment' %}active{% endif %}">
+          <span class="nav-icon">⚡</span> Run Experiments
+        </a>
+        <a href="{{ url_for('results_view') }}" class="nav-link {% if active_page == 'results' %}active{% endif %}">
+          <span class="nav-icon">📋</span> Results Table
+        </a>
+        
+        <div class="nav-heading">Academic Analysis</div>
+        <a href="{{ url_for('analytics_view') }}" class="nav-link {% if active_page == 'analytics' %}active{% endif %}">
+          <span class="nav-icon">📈</span> Analytics Charts
+        </a>
+        <a href="{{ url_for('error_analysis_view') }}" class="nav-link {% if active_page == 'error_analysis' %}active{% endif %}">
+          <span class="nav-icon">🔍</span> Error Taxonomy
+        </a>
+        <a href="{{ url_for('verification_report_view') }}" class="nav-link {% if active_page == 'verification_report' %}active{% endif %}">
+          <span class="nav-icon">🔄</span> Self-Verification
+        </a>
+        <a href="{{ url_for('prompt_library_view') }}" class="nav-link {% if active_page == 'prompt_library' %}active{% endif %}">
+          <span class="nav-icon">💬</span> Prompt Library
+        </a>
+        
+        <div class="nav-heading">Demonstration & Export</div>
+        <a href="{{ url_for('presentation_view') }}" class="nav-link {% if active_page == 'presentation' %}active{% endif %}">
+          <span class="nav-icon">🖥️</span> 7-Slide Deck
+        </a>
+        <a href="{{ url_for('report_view') }}" class="nav-link {% if active_page == 'report' %}active{% endif %}">
+          <span class="nav-icon">📑</span> Capstone Report
+        </a>
+        <a href="{{ url_for('about_view') }}" class="nav-link {% if active_page == 'about' %}active{% endif %}">
+          <span class="nav-icon">ℹ️</span> Methodology & AI
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <span>SQLite + SymPy</span>
+        <span class="badge badge-demo">Demo Mode Active</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-title-area">
+          <h1>{% block header_title %}AI Math Problem Explainer and Error Checker{% endblock %}</h1>
+        </div>
+        
+        <div class="header-actions">
+          <a href="{{ url_for('export_xlsx') }}" class="btn btn-secondary btn-sm" title="Download Excel Workbook">
+            📊 Export XLSX
+          </a>
+          <a href="{{ url_for('export_csv') }}" class="btn btn-outline btn-sm" title="Download CSV Data">
+            📄 Export CSV
+          </a>
+          <a href="{{ url_for('experiment_view') }}" class="btn btn-primary btn-sm">
+            ⚡ New Experiment
+          </a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+
+  <!-- Global Result Detail & Human Review Modal -->
+  <div class="modal-backdrop" id="resultModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 style="font-size: 17px; font-weight: 700; color: #fff;" id="modalProblemId">Problem Detail</h2>
+          <div style="font-size: 12px; color: var(--text-muted);" id="modalTopic">Topic</div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 10px;">
+          <span id="modalStatusBadge" class="badge">Status</span>
+          <button class="btn btn-outline btn-sm" data-close-modal style="padding: 4px 8px;">✕</button>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <div style="display:flex; justify-content:space-between; margin-bottom: 16px; font-size:12px; color:var(--text-dim);">
+          <div>Provider: <strong id="modalProvider" style="color:var(--text-main);"></strong></div>
+          <div>Condition: <strong id="modalCondition" style="color:var(--text-main);"></strong></div>
+          <div>Result ID: <span id="modalResultId" style="font-family:monospace;"></span></div>
+        </div>
+
+        <div class="card" style="padding:16px; margin-bottom:16px; background:rgba(0,0,0,0.25);">
+          <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:6px;">PROBLEM STATEMENT:</div>
+          <div id="modalStatement" style="font-size:14px; line-height:1.5;"></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom:16px;">
+          <div class="card" style="padding:14px; margin-bottom:0; background:rgba(16, 185, 129, 0.08); border-color:rgba(16, 185, 129, 0.2);">
+            <div style="font-size:11px; font-weight:600; color:#34d399; margin-bottom:4px;">REFERENCE ANSWER:</div>
+            <div id="modalRefAnswer" style="font-weight:700; font-size:15px; color:#fff;"></div>
+          </div>
+          <div class="card" style="padding:14px; margin-bottom:0; background:rgba(99, 102, 241, 0.08); border-color:rgba(99, 102, 241, 0.2);">
+            <div style="font-size:11px; font-weight:600; color:#a5b4fc; margin-bottom:4px;">PARSED AI ANSWER:</div>
+            <div id="modalParsedAnswer" style="font-weight:700; font-size:15px; color:#fff;"></div>
+          </div>
+        </div>
+
+        <!-- Full AI Output -->
+        <div style="margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span style="font-size:12px; font-weight:600; color:var(--text-muted);">FULL AI RESPONSE:</span>
+            <button class="btn btn-outline btn-sm" onclick="copyToClipboard(document.getElementById('modalAIResponse').textContent)">Copy Output</button>
+          </div>
+          <pre id="modalAIResponse" style="background:#000; border:1px solid var(--border-subtle); padding:14px; border-radius:8px; font-size:12px; color:#e2e8f0; white-space:pre-wrap; max-height:220px; overflow-y:auto; font-family:'Fira Code', monospace;"></pre>
+        </div>
+
+        <!-- Step-by-Step Breakdown -->
+        <div style="margin-bottom:18px;">
+          <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:8px;">STEP-BY-STEP REASONING EVALUATION:</div>
+          <div id="modalStepsContainer"></div>
+        </div>
+
+        <!-- Error Classifications -->
+        <div style="margin-bottom:18px;">
+          <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:8px;">ERROR CLASSIFICATION:</div>
+          <div id="modalErrorsContainer"></div>
+        </div>
+
+        <!-- Human Review Form -->
+        <div class="card" style="margin-bottom:0; background:rgba(255, 255, 255, 0.02); border:1px dashed var(--border-subtle);">
+          <div style="font-size:13px; font-weight:700; color:#fff; margin-bottom:10px;">Human Review Override</div>
+          <form id="humanReviewForm" onsubmit="submitHumanReview(event)">
+            <input type="hidden" id="reviewResultId">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:10px;">
+              <div>
+                <label class="form-label" style="font-size:11px;">Correctness Evaluation</label>
+                <select id="reviewScoreSelect" class="form-select" style="font-size:12px; padding:6px 10px;">
+                  <option value="1">1 — Verified Correct</option>
+                  <option value="0">0 — Incorrect</option>
+                  <option value="-1">-1 — Unscorable / Ambiguous</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" style="font-size:11px;">Reviewer Name</label>
+                <input type="text" id="reviewerName" class="form-control" placeholder="Academic Evaluator" style="font-size:12px; padding:6px 10px;">
+              </div>
+            </div>
+            <div style="margin-bottom:10px;">
+              <label class="form-label" style="font-size:11px;">Evaluation Notes / Override Justification</label>
+              <textarea id="reviewNotes" class="form-control" rows="2" placeholder="Explain the rationale for this manual assessment..." style="font-size:12px; padding:8px 10px;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm" style="width:100%;">Save Human Review Assessment</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

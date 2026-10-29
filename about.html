@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}About & Responsible AI Methodology — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Academic Methodology & Responsible AI Principles{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Project Overview & Objectives</div>
+      <div class="card-desc">College Capstone Project: AI Math Problem Explainer and Error Checker</div>
+    </div>
+  </div>
+  <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1; margin-bottom: 14px;">
+    The primary goal of this application is to scientifically investigate how reliably modern AI models solve school and college mathematics, 
+    how different prompt engineering techniques affect reasoning fidelity, and whether autonomous self-verification prompts improve accuracy or induce cognitive confirmation bias.
+  </p>
+</div>
+
+<!-- 8 Core Responsible AI Principles -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Responsible AI & Mathematical Research Quality Principles</div>
+    <div class="card-desc">Mandatory scientific guidelines for evaluating artificial intelligence in educational mathematics</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #38bdf8; font-size: 14px;">1. AI Fallibility in Arithmetic</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        Large Language Models are probabilistic next-token predictors, not formal computer algebra systems. They can and do make arithmetic slips, sign inversions, and domain violations.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #34d399; font-size: 14px;">2. Decoupling Answers from Derivations</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        A correct final answer does not imply correct reasoning (compensatory errors can accidentally yield the right number), and an incorrect final answer often contains valid intermediate steps.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #fbbf24; font-size: 14px;">3. Sampling & Prompt Sensitivity</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        Model checkpoints, sampling temperature (temperature = 0.1 was used here), system instructions, and minute phrasing changes can substantially alter mathematical derivations.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #a5b4fc; font-size: 14px;">4. Verifiable Model Versioning</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        All benchmarked trials explicitly record the exact model identifier (e.g. <code>demo-baseline-v1.0</code>, <code>gpt-4o-mini</code>) and timestamp to guarantee reproducible research comparisons.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #f87171; font-size: 14px;">5. Sample Size Limitations</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        One run per question is an exploratory comparative indication, not an unconditional statistical proof of general capability. Multiple trials and statistical margins must be reported.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #06b6d4; font-size: 14px;">6. Human-in-the-Loop Review</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        For ambiguous mathematical formatting, non-standard notation, or high-stakes examinations, automated parsers must route records to human mathematical evaluators.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #e879f9; font-size: 14px;">7. Explanations != Mathematical Proof</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        Natural language explanations produced by AI systems must not be treated as mathematical proofs without external validation through Computer Algebra Systems or formal verification.
+      </p>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px;">
+      <strong style="color: #34d399; font-size: 14px;">8. Separation of Baseline & Live Data</strong>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5;">
+        Local deterministic demo solvers are clearly labeled as baseline benchmarks and never falsely attributed to commercial proprietary models.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- API Key Configuration Guide -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Live API Configuration Guide</div>
+      <div class="card-desc">How to connect commercial AI providers for live evaluations</div>
+    </div>
+  </div>
+
+  <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px;">
+    The application runs 100% out of the box in demo baseline mode without requiring any paid API keys. 
+    To enable live evaluations with ChatGPT, Google Gemini, or Claude, configure the environment variables in a <code>.env</code> file in the project root:
+  </p>
+
+  <div style="background: #000; border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px; font-family: 'Fira Code', monospace; font-size: 12.5px; color: #a5b4fc; margin-bottom: 16px;">
+# OpenAI ChatGPT Configuration<br>
+OPENAI_API_KEY=sk-proj-your-openai-key-here<br>
+OPENAI_MODEL=gpt-4o-mini<br><br>
+# Google Gemini Configuration<br>
+GEMINI_API_KEY=your-gemini-api-key-here<br>
+GEMINI_MODEL=gemini-1.5-flash<br><br>
+# Anthropic Claude Configuration<br>
+ANTHROPIC_API_KEY=sk-ant-your-anthropic-key-here<br>
+ANTHROPIC_MODEL=claude-3-5-haiku-20241022
+  </div>
+
+  <div style="display: flex; gap: 10px;">
+    <a href="{{ url_for('experiment_view') }}" class="btn btn-primary btn-sm">⚡ Run Experiment Now</a>
+    <a href="{{ url_for('export_xlsx') }}" class="btn btn-secondary btn-sm">📊 Export Spreadsheet</a>
+  </div>
+</div>
+{% endblock %}

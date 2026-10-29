@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Results Table — AI Math Problem Explainer and Error Checker{% endblock %}
+{% block header_title %}Experimental Results Archive ({{ results | length }} Trials Recorded){% endblock %}
+
+{% block content %}
+<!-- Search & Filter Controls -->
+<form method="GET" action="{{ url_for('results_view') }}" class="filter-bar">
+  <div style="flex: 1; min-width: 180px;">
+    <input type="text" name="search" class="form-control" placeholder="Search problem, statement, answer..." value="{{ filters.search or '' }}" style="font-size: 12.5px; padding: 8px 12px;">
+  </div>
+
+  <div style="min-width: 140px;">
+    <select name="topic" class="form-select" style="font-size: 12.5px; padding: 8px 12px;">
+      <option value="">All Topics</option>
+      <option value="Algebra" {% if filters.topic == 'Algebra' %}selected{% endif %}>Algebra</option>
+      <option value="Probability and Statistics" {% if filters.topic == 'Probability and Statistics' %}selected{% endif %}>Probability & Stats</option>
+      <option value="Calculus" {% if filters.topic == 'Calculus' %}selected{% endif %}>Calculus</option>
+    </select>
+  </div>
+
+  <div style="min-width: 120px;">
+    <select name="difficulty" class="form-select" style="font-size: 12.5px; padding: 8px 12px;">
+      <option value="">All Difficulties</option>
+      <option value="Easy" {% if filters.difficulty == 'Easy' %}selected{% endif %}>Easy</option>
+      <option value="Medium" {% if filters.difficulty == 'Medium' %}selected{% endif %}>Medium</option>
+      <option value="Hard" {% if filters.difficulty == 'Hard' %}selected{% endif %}>Hard</option>
+    </select>
+  </div>
+
+  <div style="min-width: 140px;">
+    <select name="condition" class="form-select" style="font-size: 12.5px; padding: 8px 12px;">
+      <option value="">All Conditions</option>
+      <option value="plain" {% if filters.prompt_condition == 'plain' %}selected{% endif %}>Plain</option>
+      <option value="step_by_step" {% if filters.prompt_condition == 'step_by_step' %}selected{% endif %}>Step-by-Step</option>
+      <option value="self_verification" {% if filters.prompt_condition == 'self_verification' %}selected{% endif %}>Self-Verification</option>
+    </select>
+  </div>
+
+  <div style="min-width: 120px;">
+    <select name="is_correct" class="form-select" style="font-size: 12.5px; padding: 8px 12px;">
+      <option value="">All Outcomes</option>
+      <option value="1" {% if filters.is_correct == '1' %}selected{% endif %}>Correct</option>
+      <option value="0" {% if filters.is_correct == '0' %}selected{% endif %}>Incorrect</option>
+      <option value="-1" {% if filters.is_correct == '-1' %}selected{% endif %}>Needs Review</option>
+    </select>
+  </div>
+
+  <div style="display: flex; gap: 8px;">
+    <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+    <a href="{{ url_for('results_view') }}" class="btn btn-outline btn-sm">Reset</a>
+  </div>
+</form>
+
+<!-- Results Data Table -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Completed Experimental Trials ({{ results | length }})</div>
+      <div class="card-desc">Click Inspect to view the detailed derivation, granular step evaluation, and human review override</div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <a href="{{ url_for('export_xlsx') }}" class="btn btn-secondary btn-sm">Export Excel</a>
+      <a href="{{ url_for('export_csv') }}" class="btn btn-outline btn-sm">Export CSV</a>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Topic & Diff</th>
+          <th>Provider</th>
+          <th>Condition</th>
+          <th>Parsed Answer</th>
+          <th>Reference Answer</th>
+          <th>Answer Accuracy</th>
+          <th>Step Acc</th>
+          <th>Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if results %}
+          {% for r in results %}
+          <tr>
+            <td>
+              <a href="{{ url_for('problem_detail', prob_id=r.problem_id) }}" style="color: #fff; font-weight: 700; text-decoration: none;">
+                {{ r.problem_id }}
+              </a>
+            </td>
+            <td>
+              <span style="font-size: 12px; color: var(--text-muted);">{{ r.topic }}</span>
+              <span class="badge {% if r.difficulty == 'Easy' %}badge-success{% elif r.difficulty == 'Medium' %}badge-warning{% else %}badge-danger{% endif %}" style="font-size: 10px; margin-left: 4px;">
+                {{ r.difficulty }}
+              </span>
+            </td>
+            <td>
+              <div style="font-size: 13px; font-weight: 500;">{{ r.provider }}</div>
+              <div style="font-size: 10px; color: var(--text-dim); font-family: monospace;">{{ r.model }}</div>
+            </td>
+            <td>
+              <span class="badge badge-primary">{{ r.prompt_condition | replace('_', ' ') | title }}</span>
+            </td>
+            <td style="font-family: 'Fira Code', monospace; font-size: 12px; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              {{ r.parsed_answer or '(None)' }}
+            </td>
+            <td style="font-family: 'Fira Code', monospace; font-size: 12px; color: #34d399; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              {{ r.reference_answer }}
+            </td>
+            <td>
+              {% if r.corrected_is_correct is not none %}
+                {% if r.corrected_is_correct == 1 %}
+                  <span class="badge badge-success" title="Reviewed by {{ r.reviewer_name }}">✓ Correct (Reviewed)</span>
+                {% else %}
+                  <span class="badge badge-danger" title="Reviewed by {{ r.reviewer_name }}">✗ Incorrect (Reviewed)</span>
+                {% endif %}
+              {% elif r.is_correct == 1 %}
+                <span class="badge badge-success">✓ Correct</span>
+              {% elif r.is_correct == 0 %}
+                <span class="badge badge-danger">✗ Incorrect</span>
+              {% else %}
+                <span class="badge badge-warning">? Needs Review</span>
+              {% endif %}
+            </td>
+            <td>
+              <span style="font-weight: 600; color: #fff;">{{ r.step_accuracy }}%</span>
+            </td>
+            <td>
+              {% if r.is_demo == 1 %}
+                <span class="badge badge-demo">Baseline</span>
+              {% else %}
+                <span class="badge badge-live">Live</span>
+              {% endif %}
+            </td>
+            <td>
+              <button class="btn btn-outline btn-sm" onclick="openResultModal('{{ r.id }}')">
+                Inspect
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="10" style="text-align: center; padding: 40px; color: var(--text-dim);">
+              No experimental records matched the selected filters.
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
